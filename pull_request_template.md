@@ -17,3 +17,4 @@
 * [ ] Have you successfully ran tests with your changes locally?
 
 **Test coverage** =
+--------------------------------------------------------------------------------
