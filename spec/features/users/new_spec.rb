@@ -65,17 +65,13 @@ RSpec.describe "New registration page", type: :feature do
           click_button "Submit"
 
           expect(current_path).to eq("/register")
-          expect(page).to have_content("Email address taken, please try again.")
+          expect(page).to have_content("Email has already been taken")
           expect(page).to have_field(:name, with: @user_info2[:name])
           expect(page).to have_field(:address, with: @user_info2[:address])
           expect(page).to have_field(:city, with: @user_info2[:city])
           expect(page).to have_field(:state, with: @user_info2[:state])
           expect(page).to have_field(:zip, with: @user_info2[:zip])
-          expect(page).to have_field(:email, with: "") #this might need to be nil instead of ""
-          expect(page).to have_field(:password, with: "") #this might need to be nil instead of ""
-          expect(page).to have_field(:password_confirmation, with: "") #this might need to be nil instead of ""
         end
-
 
         it "cannot create a new profile with missing required fields" do
           visit "/register"
@@ -90,7 +86,7 @@ RSpec.describe "New registration page", type: :feature do
           click_button "Submit"
 
           expect(current_path).to eq("/register")
-          expect(page).to have_content("Please fill in all required fields and try again.")
+          expect(page).to have_content("Zip can't be blank")
         end
 
       end
