@@ -2,27 +2,96 @@ require 'rails_helper'
 
 RSpec.describe "New registration page", type: :feature do
       context "as a visitor" do
-        it "can create a new profile for the registration form" do
-          
-            visit "/items"
+        before(:each) do
+          @user_info1 = {name:     "Mike Dao",
+                         address:  "100 W 14th Ave Pkwy",
+                         city:     "Denver",
+                         state:    "CO",
+                         zip:      "80204",
+                         email:    "quokka@example.com",
+                         password: "mikepw"}
 
-            click_link "Register"
-
-            expect(current_path).to eq("/register")
-            expect(page).to have_content("New Registration Form")
-            
-            fill_in :name,	with: "Mike Dao"
-            fill_in :address,	with: "123 Test address"  
-            fill_in :city,	with: "Test"  
-            fill_in :state,	with: "CO"  
-            fill_in :zip,	with: "80234"  
-            fill_in :email,	with: "testemail@email.com"  
-            fill_in :password,	with: "test123"  
-            fill_in :password_confirmation,	with: "test123"  
-
-            click_button "Submit"
-            expect(current_path).to eq("/profile")  
-            expect(page).to  have_content("Welcome Mike Dao! You are now registered and logged in!")
+          @user_info2 = {name:     "Meg Stang",
+                         address:  "1331 17th St",
+                         city:     "Denver",
+                         state:    "CO",
+                         zip:      "80202",
+                         email:    "unicorn@example.com",
+                         password: "megpw"}
         end
+
+        it "can create a new profile for the registration form" do
+          visit "/items"
+          click_link "Register"
+
+          expect(current_path).to eq("/register")
+          expect(page).to have_content("New Registration Form")
+
+          fill_in :name, with: @user_info1[:name]
+          fill_in :address,	with: @user_info1[:address]
+          fill_in :city, with: @user_info1[:city]
+          fill_in :state,	with: @user_info1[:state]
+          fill_in :zip,	with: @user_info1[:zip]
+          fill_in :email,	with: @user_info1[:email]
+          fill_in :password, with: @user_info1[:password]
+          fill_in :password_confirmation,	with: @user_info1[:password]
+          click_button "Submit"
+
+          expect(current_path).to eq("/profile")
+          expect(page).to have_content("Welcome #{@user_info1[:name]}! You are now registered and logged in!")
+        end
+
+        it "cannot create a new profile with an email address already in use" do
+          visit "/register"
+          fill_in :name, with: @user_info1[:name]
+          fill_in :address,	with: @user_info1[:address]
+          fill_in :city, with: @user_info1[:city]
+          fill_in :state,	with: @user_info1[:state]
+          fill_in :zip,	with: @user_info1[:zip]
+          fill_in :email,	with: @user_info1[:email]
+          fill_in :password, with: @user_info1[:password]
+          fill_in :password_confirmation,	with: @user_info1[:password]
+          click_button "Submit"
+
+          visit "/register"
+          fill_in :name, with: @user_info2[:name]
+          fill_in :address,	with: @user_info2[:address]
+          fill_in :city, with: @user_info2[:city]
+          fill_in :state,	with: @user_info2[:state]
+          fill_in :zip,	with: @user_info2[:zip]
+          fill_in :email,	with: @user_info1[:email]
+          fill_in :password, with: @user_info2[:password]
+          fill_in :password_confirmation,	with: @user_info2[:password]
+          click_button "Submit"
+
+          expect(current_path).to eq("/register")
+          expect(page).to have_content("Email address taken, please try again.")
+          expect(page).to have_field(:name, with: @user_info2[:name])
+          expect(page).to have_field(:address, with: @user_info2[:address])
+          expect(page).to have_field(:city, with: @user_info2[:city])
+          expect(page).to have_field(:state, with: @user_info2[:state])
+          expect(page).to have_field(:zip, with: @user_info2[:zip])
+          expect(page).to have_field(:email, with: "") #this might need to be nil instead of ""
+          expect(page).to have_field(:password, with: "") #this might need to be nil instead of ""
+          expect(page).to have_field(:password_confirmation, with: "") #this might need to be nil instead of ""
+        end
+
+
+        it "cannot create a new profile with missing required fields" do
+          visit "/register"
+          fill_in :name, with: @user_info1[:name]
+          fill_in :address,	with: @user_info1[:address]
+          fill_in :city, with: @user_info1[:city]
+          fill_in :state,	with: @user_info1[:state]
+          # Missing zip field
+          fill_in :email,	with: @user_info1[:email]
+          fill_in :password, with: @user_info1[:password]
+          fill_in :password_confirmation,	with: @user_info1[:password]
+          click_button "Submit"
+
+          expect(current_path).to eq("/register")
+          expect(page).to have_content("Please fill in all required fields and try again.")
+        end
+
       end
     end
