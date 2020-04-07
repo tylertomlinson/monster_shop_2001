@@ -1,3 +1,5 @@
+**ALWAYS PULL FROM MASTER BEFORE CREATING PR**
+
 ### All Submissions:
 
 * [ ] Have you followed the guidelines in our Contributing document? (need to decided as group what to put here)
