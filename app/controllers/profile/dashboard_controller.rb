@@ -2,6 +2,7 @@ class Profile::DashboardController < ApplicationController
   before_action :require_regular
 
   def index
+    @user = current_user
   end
 
   private
