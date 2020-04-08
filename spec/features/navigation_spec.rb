@@ -25,7 +25,7 @@ RSpec.describe 'Site Navigation' do
       end
 
       expect(current_path).to eq('/merchants')
-      
+
       within 'nav' do 
         click_link "Login"
       end
@@ -67,16 +67,43 @@ RSpec.describe 'Site Navigation' do
     end
   end
 
+  
+  
+  #         User Story 3, User Navigation
+  
+  # As a default user
+  # I see the same links as a visitor
+  # Plus the following links
+  # - a link to my profile page ("/profile")
+  # - a link to log out ("/logout")
+  
+  # Minus the following links
+  # - I do not see a link to log in or register
+  
+  # I also see text that says "Logged in as Mike Dao" (or whatever my name is)
+  
+  
   describe 'As a Regular User' do
     it "I see a 404 on /merchant and /admin dashboards" do
       user = create(:regular_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+      
       visit '/merchant'
       expect(page).to have_content("The page you were looking for doesn't exist.")
-
+      
       visit '/admin'
       expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+    it "I can see the link to my profile page and a link to logout" do
+      user = create(:regular_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit "/"
+
+      expect(page).to have_link("Profile")
+      expect(page).to have_link("Logout")
+      expect(page).to have_no_link("Login") 
+      expect(page).to have_no_link("Register")
+      expect(page).to have_content("Logged in as #{user.name}")
     end
   end
 
