@@ -4,14 +4,6 @@ RSpec.describe "User can login" do
   context "as a regular user" do
     it "can enter credentials and be redirected to profile page with success message" do
     
-        regular = User.create(name: "Joe Bob",
-                                address: "777 Street",
-                                city: "Detriot",
-                                state: "MI",
-                                zip: "48127",
-                                email: "ab@c.com",
-                                password: "banana",
-                                role: 0)
         visit "/"
 
         click_link "Login"
