@@ -24,7 +24,7 @@ describe "As a visitor", type: :feature do
         expect(current_path).to eq('/merchants')
 
         within 'nav' do 
-            click_link "Login in"
+            click_link "Login"
         end
 
         expect(current_path).to eq('/login')
