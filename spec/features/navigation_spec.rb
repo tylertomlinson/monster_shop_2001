@@ -108,7 +108,7 @@ RSpec.describe 'Site Navigation' do
       expect(page).to have_link("Logout")
       expect(page).to have_no_content("Login") 
       expect(page).to have_no_content("Register")
-      expect(page).to have_link("Dashboard") 
+      expect(page).to have_link("Dashboard", href: "/merchant") 
       expect(page).to have_content("Logged in as #{user.name}")
     end
   end
@@ -133,7 +133,7 @@ RSpec.describe 'Site Navigation' do
       expect(page).to have_link("Logout")
       expect(page).to have_no_content("Login") 
       expect(page).to have_no_content("Register")
-      expect(page).to have_link("Dashboard") 
+      expect(page).to have_link("Dashboard", href: "/admin") 
       expect(page).to have_link("Users")
       expect(page).to have_no_content("Cart: 0") 
       expect(page).to have_content("Logged in as #{user.name}")
