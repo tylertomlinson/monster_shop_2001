@@ -4,6 +4,14 @@ require 'rails_helper'
 RSpec.describe 'Site Navigation' do
   describe 'As a Visitor' do
     it "I see a nav bar with links to all pages" do
+      visit "/"
+
+      within 'nav' do
+        click_link 'Home Page'
+      end
+
+      expect(current_path).to eq('/')
+
       visit '/merchants'
 
       within 'nav' do
@@ -75,6 +83,18 @@ RSpec.describe 'Site Navigation' do
 
       visit '/merchant'
       expect(page).to have_content("The page you were looking for doesn't exist.")
+
+      within 'nav' do 
+        click_link "Login"
+      end
+
+      expect(current_path).to eq('/login')
+
+      within 'nav' do
+        click_link "Register"
+      end
+
+      expect(current_path).to eq('/register')
 
       visit '/cart'
       expect(page).to have_content("The page you were looking for doesn't exist.")
