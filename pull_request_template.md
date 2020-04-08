@@ -1,9 +1,9 @@
-**ALWAYS PULL FROM MASTER BEFORE CREATING PR**
+## All Submissions:
 
-### All Submissions:
-
-* [ ] Have you followed the guidelines in our Contributing document? (need to decided as group what to put here)
-* [ ] Have you checked to ensure there aren't other open [Pull Requests](../../../pulls)? (for reducing merge conflicts)
+* [ ] Merge the target branch into the PR branch. Fix any conflicts that might appear.
+* [ ] Have you checked to ensure that other pull request are approved for merge [Pull Requests](../../../pulls)?
+* [ ] What stories does the PR include
+* [ ] What issues does the PR
 
 ### New Feature Submissions:
 
@@ -12,9 +12,10 @@
 
 ### Testing:
 
-* [ ] Does your submission pass tests?
 * [ ] Have you written new tests for your core changes, as applicable?
 * [ ] Have you successfully ran tests with your changes locally?
+* [ ] All new and existing tests passed.
 
 **Test coverage** =
 --------------------------------------------------------------------------------
+### Change Log
