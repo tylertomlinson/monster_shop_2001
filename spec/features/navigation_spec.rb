@@ -33,17 +33,50 @@ RSpec.describe 'Site Navigation' do
       end
     end
 
-    it "I see a 404 on /merchants, /admin, and /profile" do
+    it "I see a 404 on /merchant, /admin, and /profile dashboards" do
       visit '/merchant'
-
       expect(page).to have_content("The page you were looking for doesn't exist.")
 
       visit '/admin'
-
       expect(page).to have_content("The page you were looking for doesn't exist.")
 
       visit '/profile'
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+  end
 
+  describe 'As a Regular User' do
+    it "I see a 404 on /merchant and /admin dashboards" do
+      user = create(:regular_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/merchant'
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+
+      visit '/admin'
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+  end
+
+  describe 'As a Merchant' do
+    it "I see a 404 on /admin dashboard" do
+      user = create(:merchant_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/admin'
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+  end
+
+  describe 'As an Admin' do
+    it "I see a 404 on /merchant dashboard and /cart" do
+      user = create(:admin_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/merchant'
+      expect(page).to have_content("The page you were looking for doesn't exist.")
+
+      visit '/cart'
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
   end
