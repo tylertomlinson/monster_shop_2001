@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "As a visitor", type: :feature do
-    it "can see a nav bar with link to the welcome page, all items, merchants, shopping carts, login/registiration" do 
+    it "can see a nav bar with link to the welcome page, all items, merchants, shopping carts, login/registration" do 
 
         visit "/"
 
