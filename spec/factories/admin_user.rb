@@ -9,4 +9,5 @@ FactoryBot.define do
     password    { "password123" }
     role        { 2 }
   end
+  # require "pry"; binding.pry
 end
