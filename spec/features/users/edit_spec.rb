@@ -33,7 +33,7 @@ RSpec.describe 'Editing user profile', type: :feature do
 
       click_on "Submit"
 
-      expect(current_path).to eq("/profile")
+      expect(current_path).to eq('/profile')
 
       expect(page).to have_content("Your profile has been updated.")
 
