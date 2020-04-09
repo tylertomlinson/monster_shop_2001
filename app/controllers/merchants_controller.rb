@@ -8,8 +8,7 @@ class MerchantsController <ApplicationController
     @merchant = Merchant.find(params[:id])
   end
 
-  def new
-  end
+  def new; end
 
   def create
     merchant = Merchant.create(merchant_params)
@@ -46,5 +45,4 @@ class MerchantsController <ApplicationController
   def merchant_params
     params.permit(:name,:address,:city,:state,:zip)
   end
-
 end
