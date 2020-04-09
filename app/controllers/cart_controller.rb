@@ -31,7 +31,7 @@ class CartController < ApplicationController
   def require_non_admin
     render file: "/public/404" if current_admin?
   end
-  
+
   def increment_decrement
     if params[:increment_decrement] == "increment"
       cart.add_item(params[:item_id]) unless cart.limit_reached?(params[:item_id])
