@@ -68,7 +68,7 @@ RSpec.describe 'Site Navigation' do
 
   describe 'As a Merchant' do
     it "I see a 404 on /admin dashboard" do
-      user = create(:merchant_user)
+      user = create(:merchant_employee)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit '/admin'
@@ -84,7 +84,7 @@ RSpec.describe 'Site Navigation' do
       visit '/merchant'
       expect(page).to have_content("The page you were looking for doesn't exist.")
 
-      within 'nav' do 
+      within 'nav' do
         click_link "Login"
       end
 

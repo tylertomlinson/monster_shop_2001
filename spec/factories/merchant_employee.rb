@@ -8,6 +8,5 @@ FactoryBot.define do
     email       { Faker::Internet.email }
     password    { "password123" }
     role        { 1 }
-    association :merchant, factory: :merchant
   end
 end
