@@ -3,7 +3,6 @@
 * [ ] Merge the target branch into the PR branch. Fix any conflicts that might appear.
 * [ ] Have you checked to ensure that other pull request are approved for merge [Pull Requests](../../../pulls)?
 * [ ] What stories does the PR include
-* [ ] What issues does the PR
 
 ### New Feature Submissions:
 
