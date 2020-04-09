@@ -121,18 +121,6 @@ RSpec.describe 'Site Navigation' do
       visit '/merchant'
       expect(page).to have_content("The page you were looking for doesn't exist.")
 
-      within 'nav' do
-        click_link "Login"
-      end
-
-      expect(current_path).to eq('/login')
-
-      within 'nav' do
-        click_link "Register"
-      end
-
-      expect(current_path).to eq('/register')
-
       visit '/cart'
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
