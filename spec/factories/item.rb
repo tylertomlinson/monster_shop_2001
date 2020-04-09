@@ -6,6 +6,6 @@ FactoryBot.define do
     image       { Faker::Avatar.image }
     active?     {true}
     inventory   { Faker::Number.between(from: 1, to: 500)}
-    merchant
+    association :merchant, factory: :merchant
   end
 end
