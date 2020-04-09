@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe 'Editing user password' do
-    describe "can see a link to edit my password" do
+  describe "can see a link to edit my password" do
     it "fill both fields with same password and redirect to profile displaying success flash message" do
 
       user = create(:regular_user)
-
+      
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit '/profile'
@@ -44,9 +44,9 @@ RSpec.describe 'Editing user password' do
       fill_in :password_confirmation, with: "testpassword"
 
       click_on "Submit"
-      
+
       expect(current_path).to eq('/profile/edit_password')
       expect(page).to have_content("Password confirmation doesn't match Password")
     end
-    end
   end
+end

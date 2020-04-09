@@ -36,7 +36,7 @@ RSpec.describe 'Editing user profile', type: :feature do
     fill_in :password_confirmation, with: "testpassword"
 
     click_on "Submit"
-
+    
     expect(current_path).to eq('/profile')
 
     expect(page).to have_content("Your profile has been updated.")

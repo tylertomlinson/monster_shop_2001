@@ -66,7 +66,7 @@ RSpec.describe 'Site Navigation' do
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
   end
-
+  
   describe 'As a Regular User' do
     it "I see a 404 on /merchant and /admin dashboards" do
       user = create(:regular_user)
