@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get "/register", to: "users#new"
   post "/register", to: "users#create"
 
+
   namespace :merchant do
     get "/", to: "dashboard#index"
   end
@@ -51,4 +52,9 @@ Rails.application.routes.draw do
   namespace :profile do
     get "/", to: "dashboard#index"
   end
+
+  get "/profile/edit_password", to: "users#edit_password"
+  patch "/profile/edit_password", to: "users#update_password"
+  get "/profile/edit", to: "users#edit"
+  patch "/profile", to: "users#update"
 end
