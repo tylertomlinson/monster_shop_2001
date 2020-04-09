@@ -10,18 +10,18 @@
 
   <body>
     <nav class = "topnav">
-      <%= link_to "Home Page", "/"%>
-      <%= link_to "All Merchants", "/merchants"%>
-      <%= link_to "All Items", "/items"%>
+      <%= link_to "Home Page", "/" %>
+      <%= link_to "All Merchants", "/merchants" %>
+      <%= link_to "All Items", "/items" %>
+      <%= link_to "Profile", "/profile" if current_user %>
+      <%= link_to "Dashboard", "/merchant" if current_merchant? %>
+      <%= link_to "Dashboard", "/admin" if current_admin? %>
+      <%= link_to "Users", "/admin/users" if current_admin? %>
+      <%= link_to "Login", "/login" unless current_user %>
+      <%= link_to "Logout", "/logout", method: :delete if current_user %>
+      <%= link_to "Register", "/register" unless current_user %>
       <%= link_to "Cart: #{cart.total_items}", "/cart" unless current_admin? %>
-      <%= link_to "Login", "/login" unless current_user%>
-      <%= link_to "Register", "/register" unless current_user%>
-      <%= link_to "Profile", "/profile" if current_regular?%>
-      <%= link_to "Dashboard", "/merchant" if current_merchant?%>
-      <%= link_to "Dashboard", "/admin" if current_admin?%>
-      <%= link_to "Users", "/admin/users" if current_admin?%>
-      <%= link_to "Logout", "/logout", method: :delete if current_user%>
-      <%= "Logged in as #{current_user.name}" if current_user%>
+      <%= "Logged in as #{current_user.name}" if current_user %>
     </nav>
     <% flash.each do |name, msg| %>
       <div class= "<%=name%>-flash">
