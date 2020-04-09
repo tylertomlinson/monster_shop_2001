@@ -17,6 +17,34 @@ describe Item, type: :model do
     it {should have_many(:orders).through(:item_orders)}
   end
 
+  # describe "class methods" do
+  #   it "most and least popular items" do
+  #
+  #   item_1 = create(:item)
+  #   item_2 = create(:item)
+  #   item_3 = create(:item)
+  #   item_4 = create(:item)
+  #   item_5 = create(:item)
+  #   item_6 = create(:item)
+  #   item_7 = create(:item)
+  #
+  #   create(:item_order, item: item_1)
+  #   create(:item_order, item: item_1)
+  #   create(:item_order, item: item_1)
+  #   create(:item_order, item: item_2)
+  #   create(:item_order, item: item_2)
+  #   create(:item_order, item: item_3)
+  #   create(:item_order, item: item_4)
+  #   create(:item_order, item: item_4)
+  #   create(:item_order, item: item_5)
+  #   create(:item_order, item: item_6)
+  #   create(:item_order, item: item_7)
+  #
+  #   expect(Item.popular(5)).to eq([item_11])
+  #   expect(Item.popular(5, "asc")).to eq([item_3])
+  #   end
+  # end
+
   describe "instance methods" do
     before(:each) do
       @bike_shop = Merchant.create(name: "Brian's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)

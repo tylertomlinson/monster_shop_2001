@@ -17,7 +17,7 @@ RSpec.describe 'Cart show' do
       click_on "Add To Cart"
       @items_in_cart = [@paper,@tire,@pencil]
     end
-
+    
     it 'Theres a link to checkout' do
       visit "/cart"
 
