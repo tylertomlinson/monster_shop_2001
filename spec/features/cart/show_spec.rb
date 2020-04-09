@@ -55,8 +55,42 @@ RSpec.describe 'Cart show' do
 
         expect(page).to have_content("Total: $124")
       end
+
+      it "I can increment my cart item by one" do
+        visit "/cart"
+
+        within "#cart-item-#{@tire.id}" do
+          within("td:nth-child(4)") do
+            expect(page).to have_content("1")
+            click_link "+"
+            expect(page).to have_content("2")
+            10.times do
+              click_link "+"
+            end
+            expect(page).to have_content("12")
+            click_link "+"
+            expect(page).to have_content("12")
+          end
+        end
+      end
+
+      it "I can decrement my cart item by one" do
+        visit "/cart"
+
+        within "#cart-item-#{@tire.id}" do
+          within("td:nth-child(4)") do
+            click_link "+"
+            expect(page).to have_content("2")
+            click_link "-"
+            expect(page).to have_content("1")
+            click_link "-"
+          end
+        end
+        expect(page).to have_no_content(@tire.name)
+      end
     end
   end
+
   describe "When I haven't added anything to my cart" do
     describe "and visit my cart show page" do
       it "I see a message saying my cart is empty" do
