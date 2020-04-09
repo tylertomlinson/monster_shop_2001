@@ -1,0 +1,29 @@
+<h1>Edit Profile</h1>
+
+<%= form_tag ("/profile"), method: :patch do %>
+    <%= label_tag :name %><br/>
+    <%= text_field_tag :name, @user.nil? ? ' ' : @user.name %><br/>
+
+    <%= label_tag :address %><br/>
+    <%= text_field_tag :address, @user.nil? ? ' ' : @user.address %><br/>
+
+    <%= label_tag :city %><br/>
+    <%= text_field_tag :city, @user.nil? ? ' ' : @user.city %><br/>
+
+    <%= label_tag :state %><br/>
+    <%= text_field_tag :state, @user.nil? ? ' ' : @user.state %><br/>
+
+    <%= label_tag :zip %><br/>
+    <%= text_field_tag :zip, @user.nil? ? ' ' : @user.zip %><br/>
+
+    <%= label_tag :email %><br/>
+    <%= text_field_tag :email, @user.nil? ? ' ' : @user.email %><br/>
+
+    <%= label_tag :password %><br/>
+    <%= password_field_tag :password %><br/>
+
+    <%= label_tag :confirm_password %><br/>
+    <%= password_field_tag :password_confirmation %><br/>
+
+    <%=submit_tag "Submit"%>
+<%end%>

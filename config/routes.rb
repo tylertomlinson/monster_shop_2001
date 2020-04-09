@@ -47,6 +47,8 @@ Rails.application.routes.draw do
 
   get "/register", to: "users#new"
   post "/register", to: "users#create"
+  get "/profile/edit", to: "users#edit"
+  patch "/profile", to: "users#update"
 
   namespace :merchant do
     get "/", to: "dashboard#index"
