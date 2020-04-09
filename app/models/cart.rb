@@ -6,8 +6,12 @@ class Cart
   end
 
   def add_item(item)
-    @contents[item] = 0 if !@contents[item]
+    @contents[item] = 0 unless @contents[item]
     @contents[item] += 1
+  end
+
+  def remove_item(item)
+    @contents[item] -= 1
   end
 
   def total_items
@@ -16,7 +20,7 @@ class Cart
 
   def items
     item_quantity = {}
-    @contents.each do |item_id,quantity|
+    @contents.each do |item_id, quantity|
       item_quantity[Item.find(item_id)] = quantity
     end
     item_quantity
@@ -27,9 +31,16 @@ class Cart
   end
 
   def total
-    @contents.sum do |item_id,quantity|
+    @contents.sum do |item_id, quantity|
       Item.find(item_id).price * quantity
     end
   end
 
+  def limit_reached?(item)
+    @contents[item] >= Item.find(item).inventory
+  end
+
+  def quantity_zero?(item)
+    @contents[item] == 0
+  end
 end
