@@ -100,7 +100,7 @@ RSpec.describe 'Site Navigation' do
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
     it "I can see the link to my profile page and a link to logout" do
-      user = create(:merchant_user)
+      user = create(:merchant_employee)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit "/"
 

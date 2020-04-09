@@ -6,6 +6,7 @@ RSpec.describe 'Editing user profile', type: :feature do
     @user = create(:regular_user)
     @old_name = @user.name
     @old_state = @user.state
+    @dup_email_user = create(:regular_user, email: 'alreadytaken@gmail.com')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
@@ -68,5 +69,18 @@ RSpec.describe 'Editing user profile', type: :feature do
     click_on "Submit"
 
     expect(page).to have_content("City can't be blank and Zip can't be blank")
+  end
+
+  it "error message displaying email has already been used" do
+
+    visit '/profile'
+
+    click_link "Edit Profile"
+
+    fill_in :email, with: "alreadytaken@gmail.com"
+
+    click_on "Submit"
+
+    expect(page).to have_content("Email has already been taken")
   end
 end
