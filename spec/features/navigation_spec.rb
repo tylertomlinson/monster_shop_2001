@@ -25,7 +25,20 @@ RSpec.describe 'Site Navigation' do
       end
 
       expect(current_path).to eq('/merchants')
+
+      within 'nav' do
+        click_link "Login"
+      end
+
+      expect(current_path).to eq('/login')
+
+      within 'nav' do
+        click_link "Register"
+      end
+
+      expect(current_path).to eq('/register')
     end
+
 
     it "I can see a cart indicator on all pages" do
       visit '/merchants'
@@ -40,6 +53,7 @@ RSpec.describe 'Site Navigation' do
         expect(page).to have_content("Cart: 0")
       end
     end
+
 
     it "I see a 404 on /merchant, /admin, and /profile dashboards" do
       visit '/merchant'
@@ -64,6 +78,17 @@ RSpec.describe 'Site Navigation' do
       visit '/admin'
       expect(page).to have_content("The page you were looking for doesn't exist.")
     end
+    it "I can see the link to my profile page and a link to logout" do
+      user = create(:regular_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit "/"
+
+      expect(page).to have_link("Profile")
+      expect(page).to have_link("Logout")
+      expect(page).to have_no_content("Login")
+      expect(page).to have_no_content("Register")
+      expect(page).to have_content("Logged in as #{user.name}")
+    end
   end
 
   describe 'As a Merchant' do
@@ -73,6 +98,18 @@ RSpec.describe 'Site Navigation' do
 
       visit '/admin'
       expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+    it "I can see the link to my profile page and a link to logout" do
+      user = create(:merchant_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit "/"
+
+      expect(page).to have_link("Profile")
+      expect(page).to have_link("Logout")
+      expect(page).to have_no_content("Login")
+      expect(page).to have_no_content("Register")
+      expect(page).to have_link("Dashboard", href: "/merchant")
+      expect(page).to have_content("Logged in as #{user.name}")
     end
   end
 
@@ -98,6 +135,20 @@ RSpec.describe 'Site Navigation' do
 
       visit '/cart'
       expect(page).to have_content("The page you were looking for doesn't exist.")
+    end
+    it "I can see the link to my profile page and a link to logout" do
+      user = create(:admin_user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit "/"
+
+      expect(page).to have_link("Profile")
+      expect(page).to have_link("Logout")
+      expect(page).to have_no_content("Login")
+      expect(page).to have_no_content("Register")
+      expect(page).to have_link("Dashboard", href: "/admin")
+      expect(page).to have_link("Users")
+      expect(page).to have_no_content("Cart: 0")
+      expect(page).to have_content("Logged in as #{user.name}")
     end
   end
 end
