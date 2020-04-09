@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :merchant_user, class: User do
+  factory :merchant_employee, class: User do
     name        { Faker::Name.name }
     address     { Faker::Address.street_address }
     city        { Faker::Address.city }
