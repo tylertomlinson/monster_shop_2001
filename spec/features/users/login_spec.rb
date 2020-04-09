@@ -1,96 +1,156 @@
 require 'rails_helper'
 
 RSpec.describe "User can login" do
-  context "as a regular user" do
-    it "can enter credentials and be redirected to profile page with success message" do
-    
-        visit "/"
+    context "as a regular user" do
+        it "can enter credentials and be redirected to profile page with success message" do
+            
+            user = create(:regular_user)
 
-        click_link "Login"
+            visit "/"
 
-        expect(current_path).to eq "/login" 
+            click_link "Login"
 
-        fill_in :email,	with: "ab@c.com"
-        fill_in :password,	with: "banana"  
+            expect(current_path).to eq("/login") 
 
-        click_link "Login"
+            fill_in :email,	with: "#{user.email}"
+            fill_in :password,	with: "#{user.password}" 
 
-        expect(current_path).to eq("/profile") 
-        expect(page).to have_content("Welcome #{regular.name}, you have succesfully logged in!") 
+            click_button "Sign In"
+            
+            expect(current_path).to eq(profile_path) 
+            expect(page).to have_content("Welcome #{user.name}, you have successfully logged in!") 
+        end
 
+        it "cannot log in with bad credentials" do
 
+            user = create(:regular_user)
+
+            visit "/"
+
+            click_link "Login"
+
+            expect(current_path).to eq "/login" 
+
+            fill_in :email,	with: "#{user.email}"
+            fill_in :password,	with: "" 
+
+            click_button "Sign In"
+
+            expect(current_path).to eq("/login") 
+            expect(page).to have_content("Please enter valid email and/or password to login") 
+        end
+
+        it "will be redirected to profile page if already logged in" do
+            
+            user = create(:regular_user)
+
+            visit '/'
+            
+            click_link "Login"
+
+            fill_in :email,	with: "#{user.email}"
+            fill_in :password,	with: "#{user.password}" 
+
+            click_button "Sign In"
+
+            visit "/login"
+
+            expect(page).to have_content("You are already logged in!") 
+            expect(current_path).to eq("/profile") 
+        end
+
+        it "can logout and be redirected to welcome page with success message" do
+            user = create(:regular_user)
+            allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+            visit '/'
+
+            click_link "Logout"
+
+            expect(current_path).to eq("/") 
+            expect(page).to have_content("You have successfully logged out!") 
+            expect(page).to have_content("Cart: 0") 
+
+        end
     end
 
-    it "cannot log in with bad credentials" do
-
-        regular = User.create(name: "Joe Bob",
-                                address: "777 Street",
-                                city: "Detriot",
-                                state: "MI",
-                                zip: "48127",
-                                email: "ab@c.com",
-                                password: "banana",
-                                role: 0)
-        visit "/"
-
-        click_link "Login"
-
-        expect(current_path).to eq "/login" 
-
-        fill_in :email,	with: "ab@c.com"
-        fill_in :password,	with: "apple"  
-
-        click_link "Login"
-
-        expect(current_path).to eq("/login") 
-        expect(page).to have_content("Please enter valid email and/or password to login")
-    end
-
-    it "will be redirected to profile page if already logged in" do
+    context "as a merchant user" do
+        it "can enter credentials and be redirected to merchant dashboard with success message" do
         
-        user = create(:regular_user)
+            merchant = create(:merchant_user)
 
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+            visit "/"
 
-        visit "/profile"
+            click_link "Login"
 
-        click_link "Login"
+            expect(current_path).to eq("/login") 
 
-        expect(current_path).to eq("/profile") 
-        expect(page).to have_content("You are already logged in!") 
+            fill_in :email,	with: "#{merchant.email}"
+            fill_in :password,	with: "#{merchant.password}" 
+
+            click_button "Sign In"
+            
+            expect(current_path).to eq(merchant_path) 
+            expect(page).to have_content("Welcome #{merchant.name}, you have successfully logged in!") 
+        end
+
+        it "will be redirected to merchant dashboard if already logged in" do
+
+            merchant = create(:merchant_user)
+
+            visit '/'
+            
+            click_link "Login"
+
+            fill_in :email,	with: "#{merchant.email}"
+            fill_in :password,	with: "#{merchant.password}" 
+
+            click_button "Sign In"
+
+            visit "/login"
+
+            expect(page).to have_content("You are already logged in!") 
+            expect(current_path).to eq(merchant_path) 
+        end
     end
 
-    it "can logout and be redirected to welcome page with success message" do
-        
-    end
+    context "as an admin user" do
+        it "can enter credentials and be redirected to admin dashboard with success message" do
+            
+            admin = create(:admin_user)
 
-    it "will have all items deleted from cart upon logout" do
-        
-    end
-    
-    
-    
-    
-  end
+            visit "/"
 
-  context "as a merchant user" do
-    it "can enter credentials and be redirected to merchant dashboard with success message" do
-      
-    end
+            click_link "Login"
 
-    it "will be redirected to merchant dashboard if already logged in" do
-        
-    end
-  end
+            expect(current_path).to eq("/login") 
 
-  context "as an admin user" do
-    it "can enter credentials and be redirected to admin dashboard with success message" do
-      
-    end
+            fill_in :email,	with: "#{admin.email}"
+            fill_in :password,	with: "#{admin.password}" 
 
-    it "will be redirected to admin dashboard if already logged in" do
-        
-    end
-  end
+            click_button "Sign In"
+            
+            expect(current_path).to eq(admin_path) 
+            expect(page).to have_content("Welcome #{admin.name}, you have successfully logged in!") 
+        end
 
+        it "will be redirected to admin dashboard if already logged in" do
+
+            admin = create(:admin_user)
+
+            visit '/'
+            
+            click_link "Login"
+
+            fill_in :email,	with: "#{admin.email}"
+            fill_in :password,	with: "#{admin.password}" 
+
+            click_button "Sign In"
+
+            visit "/login"
+
+            expect(page).to have_content("You are already logged in!") 
+            expect(current_path).to eq(admin_path) 
+        end
+    end
 end
