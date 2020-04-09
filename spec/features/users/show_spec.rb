@@ -15,7 +15,6 @@ RSpec.describe 'Logged in user show page', type: :feature do
     expect(page).to have_content(user.state)
     expect(page).to have_content(user.zip)
     expect(page).to have_content(user.email)
-    save_and_open_page
     expect(page).to have_link("Edit Profile")
   end
 end
