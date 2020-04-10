@@ -1,5 +1,5 @@
 class Profile::DashboardController < ApplicationController
-  before_action :require_regular
+  before_action :require_current_user
 
   def index
     @user = current_user
@@ -7,7 +7,7 @@ class Profile::DashboardController < ApplicationController
 
   private
 
-  def require_regular
-    render file: "/public/404" unless current_regular?
+  def require_current_user
+    render file: "/public/404" unless current_user
   end
 end

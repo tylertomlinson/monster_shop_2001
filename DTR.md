@@ -1,9 +1,11 @@
-Project: 
-  - Monster Shop (Group) 
+Project:
+  - Monster Shop (Group)
+
 Group Member Names:
   - Mariana Cid, Daniel Selph, Tyler Tomlinson, Alex Latham
+
 Goals and Expectations for the Project (What does each group member hope to get out of this project? What do we want to achieve as a team? How will we know that we're successful?):
-  - Aim for a three all categories.
+  - Aim for a three in all categories. Aim to follow the posted schedule for completing USes - dates are posted on Trello.
 
 Team strengths & collaboration styles (consider discussing your Pairin qualities here):
   - Team-builidng, organizing, planning, communication, task-oriented, flexibility, openness to new ideas. Prefer driver-navigate to do setup/prerequisites and then assign closely-related stories for pairs. Assign chunks at a time.
@@ -12,14 +14,14 @@ How we can use our strengths to overcome obstacles:
   - Doing certain steps together to avoid re-doing code, frequent retros (goal of two/day -- more or less as needed), we'll use Trello to track and plan our progress.
 
 Schedule Expectations (When are we available to work together and individually?
-  - What constraints do we have? Make sure to discuss the remote questions above in regards to this section): Daniel works in the morning (~6PM), but is generally available 7-9PM. Breaks at lunch (12-1PM) and after class (4-5PM).
+  - What constraints do we have? Make sure to discuss the remote questions above in regards to this section): Daniel generally works in the morning (~6PM), but is sometimes available 7-9PM. Breaks at lunch (12-1PM) and after class (4-5PM). Actual availability varies by day, so on the morning of each day, we will communicate if we have conflicting things to take care of.
 
 Communication Expectations (How and often will we communicate? How do we keep lines of communication open? How will we make decisions as a team? How will we communicate about our emotional and mental well-being with each other?):
   - Frequent retros, big decisions made over a call, quick decisions over Slack. Be upfront and communicate feelings whenever.
 
 Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
-  - Implement Bootstrap, improve familiarity with ActiveRecord/SQL
-  
+  - Improve familiarity with ActiveRecord/SQL and MVC.
+
 Workload Expectations (What features do we each want to work on?):
   - Even distribution of responsibilities. Work off suggested timeline and determine our strengths and interests.
 
