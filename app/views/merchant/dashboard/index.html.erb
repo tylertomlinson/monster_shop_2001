@@ -1,0 +1,10 @@
+<h3>Merchant Dashboard</h3>
+<% if !@merchant.nil? %>
+<section id="merchant-info">
+  <h4>Employer Name</h4>
+  <%= @merchant.name %>
+  <h4>Employer Address</h4>
+  <%= "#{@merchant.address}" %> <br>
+  <%= "#{@merchant.city}, #{@merchant.state} #{@merchant.zip}" %>
+</section>
+<% end %>
