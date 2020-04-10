@@ -16,6 +16,7 @@ RSpec.describe 'Logged in user show page', type: :feature do
     expect(page).to have_content(@user.zip)
     expect(page).to have_content(@user.email)
     expect(page).to have_link("Edit Profile")
+    expect(page).to have_no_link("My Orders")
   end
 
   it 'displays orders link' do
@@ -40,7 +41,6 @@ RSpec.describe 'Logged in user show page', type: :feature do
     fill_in :zip, with: zip
     click_button "Create Order"
     visit "/profile"
-    click_link("My Orders")
-    expect(current_path).to eq("/profiles/orders")
+    expect(page).to have_link("My Orders", href: "/profile/orders")
   end
 end
