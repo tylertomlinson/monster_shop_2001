@@ -4,4 +4,6 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   enum role: %w(regular merchant admin)
+
+  has_many :orders
 end
