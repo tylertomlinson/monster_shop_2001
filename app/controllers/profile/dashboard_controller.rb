@@ -5,6 +5,10 @@ class Profile::DashboardController < ApplicationController
     @user = current_user
   end
 
+  def orders
+    @user = current_user
+  end
+
   private
 
   def require_current_user
