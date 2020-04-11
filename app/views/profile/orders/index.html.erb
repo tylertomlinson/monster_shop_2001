@@ -1,5 +1,5 @@
 <h1>My Orders</h1>
-<% @user.orders.each do |order| %>
+<% @orders.each do |order| %>
   <article id="order-<%= order.id %>">
     <%= link_to "Order ##{order.id}", "/profile/orders/#{order.id}" %>
     <p>Date created: <%= order.created_at %></p>
