@@ -28,11 +28,32 @@ describe Order, type: :model do
       user = create(:regular_user)
       @order_1 = user.orders.create!(name: 'Meg', address: '123 Stang Ave', city: 'Hershey', state: 'PA', zip: 17033)
 
-      @order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2)
-      @order_1.item_orders.create!(item: @pull_toy, price: @pull_toy.price, quantity: 3)
+      @item_order_1 = @order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2, status: "fulfilled")
+      @item_order_2 = @order_1.item_orders.create!(item: @pull_toy, price: @pull_toy.price, quantity: 3)
     end
+
     it 'grandtotal' do
       expect(@order_1.grandtotal).to eq(230)
+    end
+
+    it 'total_quantity' do
+      expect(@order_1.total_quantity).to eq(5)
+    end
+
+    it 'cancel' do
+      @order_1.cancel
+
+      @order_1.reload
+      @tire.reload
+      @pull_toy.reload
+      @item_order_1.reload
+      @item_order_2.reload
+
+      expect(@tire.inventory).to eq(14)
+      expect(@pull_toy.inventory).to eq(32)
+      expect(@item_order_1.status).to eq("unfulfilled")
+      expect(@item_order_2.status).to eq("unfulfilled")
+      expect(@order_1.status).to eq("cancelled")
     end
   end
 end
