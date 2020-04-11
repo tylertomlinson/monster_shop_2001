@@ -9,7 +9,7 @@ RSpec.describe 'merchant_employee', type: :feature do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(employee)
 
     visit '/merchant'
-    save_and_open_page
+    
     within '#merchant-info' do
       expect(page).to have_content(merchant.name)
       expect(page).to have_content(merchant.address)
