@@ -45,19 +45,24 @@ RSpec.describe "As a user" do
     click_link "Order ##{@order_1.id}"
     click_link "Cancel Order"
 
+    @order_1.reload
+    @item_order_1.reload
+    @item_order_2.reload
+    @tire.reload
+    @chain.reload
+    
     expect(@order_1.status).to eq("cancelled")
     @order_1.item_orders.each do |item_order|
       expect(item_order.status).to eq("unfulfilled")
     end
     expect(@tire.inventory).to eq(14)
     expect(@chain.inventory).to eq(5)
-
     expect(current_path).to eq("/profile")
     expect(page).to have_content("Order ##{@order_1.id} has been cancelled")
 
     visit profile_order_path(@order_1)
-    expect(page).to have_content("Status: cancelled")
 
+    expect(page).to have_content("Status: cancelled")
   end
 end
 
