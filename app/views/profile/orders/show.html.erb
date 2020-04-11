@@ -9,9 +9,9 @@
     <p>Description: <%= item_order.item.description %></p>
     <%= image_tag item_order.item.image %>
     <p>Quantity: <%= item_order.quantity %></p>
-    <p>Price: <%= item_order.item.price %></p>
-    <p>Subtotal: <%= item_order.subtotal %></p>
+    <p>Price: <%= number_to_currency(item_order.item.price) %></p>
+    <p>Subtotal: <%= number_to_currency(item_order.subtotal) %></p>
   </article>
 <% end %>
 <p>Total quantity: <%= @order.total_quantity %></p>
-<p>Grand total: <%= @order.grandtotal %></p>
+<p>Grand total: <%= number_to_currency(@order.grandtotal) %></p>

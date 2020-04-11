@@ -27,13 +27,13 @@ RSpec.describe "As a user" do
         expect(page).to have_content("Description: #{item_order.item.description}")
         expect(page).to have_css("img[src*='#{item_order.item.image}']")
         expect(page).to have_content("Quantity: #{item_order.quantity}")
-        expect(page).to have_content("Price: #{item_order.item.price}")
-        expect(page).to have_content("Subtotal: #{item_order.subtotal}")
+        expect(page).to have_content("Price: $#{item_order.item.price}.00")
+        expect(page).to have_content("Subtotal: $#{item_order.subtotal}0")
       end
     end
 
     expect(page).to have_content("Total quantity: #{@order_1.total_quantity}")
-    expect(page).to have_content("Grand total: #{@order_1.grandtotal}")
+    expect(page).to have_content("Grand total: $#{@order_1.grandtotal}0")
   end
 
   it "I can cancel an order" do
@@ -50,7 +50,7 @@ RSpec.describe "As a user" do
     @item_order_2.reload
     @tire.reload
     @chain.reload
-    
+
     expect(@order_1.status).to eq("cancelled")
     @order_1.item_orders.each do |item_order|
       expect(item_order.status).to eq("unfulfilled")
