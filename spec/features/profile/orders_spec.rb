@@ -56,4 +56,11 @@ RSpec.describe "As a user" do
     expect(page).to have_content("Total quantity: #{@order_1.total_quantity}")
     expect(page).to have_content("Grand total: #{@order_1.grandtotal}")
   end
+
+  xit "I can cancel an order from the order show page" do
+    click_link "Order ##{@order_1.id}"
+    click_link "Cancel Order"
+    expect(current_path).to eq("/profile")
+    expect(page).to have_content("Order ##{@order_1.id} has been cancelled")
+  end
 end
