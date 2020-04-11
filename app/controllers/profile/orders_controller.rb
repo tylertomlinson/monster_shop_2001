@@ -8,4 +8,11 @@ class Profile::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
+
+  def destroy
+    order = Order.find(params[:id])
+    order.cancel
+    flash[:notice] = "Order ##{order.id} has been cancelled"
+    redirect_to profile_path
+  end
 end
