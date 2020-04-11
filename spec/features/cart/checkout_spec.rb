@@ -16,6 +16,7 @@ RSpec.describe 'Cart show' do
       visit "/items/#{@pencil.id}"
       click_on "Add To Cart"
       @items_in_cart = [@paper,@tire,@pencil]
+      
       user = create(:regular_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
