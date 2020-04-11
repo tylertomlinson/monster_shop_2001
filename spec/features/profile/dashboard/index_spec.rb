@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Logged in user profile page', type: :feature do
+RSpec.describe 'Logged in user profile dashboard page', type: :feature do
   before(:each) do
     @user = create(:regular_user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
