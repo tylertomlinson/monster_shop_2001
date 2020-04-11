@@ -62,6 +62,6 @@ Rails.application.routes.draw do
 
   namespace :profile do
     get "/", to: "dashboard#index"
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :destroy]
   end
 end
