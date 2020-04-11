@@ -62,6 +62,6 @@ Rails.application.routes.draw do
 
   namespace :profile do
     get "/", to: "dashboard#index"
-    get "/orders", to: "dashboard#orders"
+    get "/orders", to: "orders#index"
   end
 end
