@@ -33,34 +33,4 @@ RSpec.describe "As a user" do
       expect(page).to have_content("Grand total: #{@order_2.grandtotal}")
     end
   end
-
-  it "I can see an order show page" do
-    click_link "Order ##{@order_1.id}"
-    expect(current_path).to eq("/profile/orders/#{@order_1.id}")
-    expect(page).to have_content("Order ##{@order_1.id}")
-    expect(page).to have_content("Date created: #{@order_1.created_at}")
-    expect(page).to have_content("Date updated: #{@order_1.updated_at}")
-    expect(page).to have_content("Status: #{@order_1.status}")
-
-    @order_1.item_orders.each do |item_order|
-      within("#item_order-#{item_order.item.id}") do
-        expect(page).to have_content("Name: #{item_order.item.name}")
-        expect(page).to have_content("Description: #{item_order.item.description}")
-        expect(page).to have_css("img[src*='#{item_order.item.image}']")
-        expect(page).to have_content("Quantity: #{item_order.quantity}")
-        expect(page).to have_content("Price: #{item_order.item.price}")
-        expect(page).to have_content("Subtotal: #{item_order.subtotal}")
-      end
-    end
-
-    expect(page).to have_content("Total quantity: #{@order_1.total_quantity}")
-    expect(page).to have_content("Grand total: #{@order_1.grandtotal}")
-  end
-
-  xit "I can cancel an order from the order show page" do
-    click_link "Order ##{@order_1.id}"
-    click_link "Cancel Order"
-    expect(current_path).to eq("/profile")
-    expect(page).to have_content("Order ##{@order_1.id} has been cancelled")
-  end
 end
