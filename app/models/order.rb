@@ -1,5 +1,5 @@
 class Order <ApplicationRecord
-  validates_presence_of :name, :address, :city, :state, :zip
+  validates_presence_of :name, :address, :city, :state, :zip, :user_id, :status
 
   belongs_to :user
   has_many :item_orders
