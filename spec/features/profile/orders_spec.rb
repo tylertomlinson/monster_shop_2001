@@ -42,18 +42,18 @@ RSpec.describe "As a user" do
     expect(page).to have_content("Date updated: #{@order_1.updated_at}")
     expect(page).to have_content("Status: #{@order_1.status}")
 
-    @order_1.items.each do |item|
-      within("#item-#{item.id}") do
-        expect(page).to have_content("Name: #{item.name}")
-        expect(page).to have_content("Description: item.description")
-        expect(page).to have_content(item.image)
-        expect(page).to have_content("Quantity: #{item.item_orders.first.quantity}")
-        expect(page).to have_content("Price: #{item.item_orders.first.price}")
-        expect(page).to have_content("Subtotal: #{item.item_orders.first.subtotal}")
+    @order_1.item_orders.each do |item_order|
+      within("#item_order-#{item_order.item.id}") do
+        expect(page).to have_content("Name: #{item_order.item.name}")
+        expect(page).to have_content("Description: #{item_order.item.description}")
+        expect(page).to have_css("img[src*='#{item_order.item.image}']")
+        expect(page).to have_content("Quantity: #{item_order.quantity}")
+        expect(page).to have_content("Price: #{item_order.item.price}")
+        expect(page).to have_content("Subtotal: #{item_order.subtotal}")
       end
     end
 
-    expect(page).to have_content("Total quantity: #{@order_1.item_orders.sum(:quantity)}")
+    expect(page).to have_content("Total quantity: #{@order_1.total_quantity}")
     expect(page).to have_content("Grand total: #{@order_1.grandtotal}")
   end
 end
