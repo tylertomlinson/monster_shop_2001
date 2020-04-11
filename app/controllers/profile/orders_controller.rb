@@ -1,8 +1,8 @@
-class Profile::DashboardController < ApplicationController
+class Profile::OrdersController < ApplicationController
   before_action :require_current_user
 
   def index
-    @user = current_user
+    @orders = Order.where(user_id: current_user.id)
   end
 
   private
