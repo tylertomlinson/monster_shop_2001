@@ -4,10 +4,4 @@ class Profile::DashboardController < ApplicationController
   def index
     @user = current_user
   end
-
-  private
-
-  def require_current_user
-    render file: "/public/404" unless current_user
-  end
 end
