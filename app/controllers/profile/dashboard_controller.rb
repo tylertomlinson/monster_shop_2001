@@ -9,6 +9,10 @@ class Profile::DashboardController < ApplicationController
     @user = current_user
   end
 
+  def order
+    @order = Order.find(params[:id])
+  end
+
   private
 
   def require_current_user
