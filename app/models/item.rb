@@ -23,5 +23,4 @@ class Item <ApplicationRecord
   def no_orders?
     item_orders.empty?
   end
-
 end

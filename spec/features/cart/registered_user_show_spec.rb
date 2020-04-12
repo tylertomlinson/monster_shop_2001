@@ -1,31 +1,30 @@
 require  'rails_helper'
 
 describe "As a registerd user " do
-  it "when I add items to my cart and visit my card" do 
-    before(:each) do 
-      @user = create(:regular_user)
-      
-      allow_any_instance_of(ApplicationController).to_recieve(:current_user).and_return(@user)
+  before(:each) do 
+    @user = create(:regular_user)
+    
+    allow_any_instance_of(ApplicationController).to recieve(:current_user).and_return(@user)
+    
+    @item1 = create(:item)
+    @item2 = create(:item)
+    @item3 = create(:item)
+    
+    visit "/items/#{@item1.id}"
+    click_on "Add To Cart"
+    visit "/items/#{@item2.id}"
+    click_on "Add To Cart"
+    visit "/items/#{@item3.id}"
+    click_on "Add To Cart"
+    
+    visit '/cart'
+  end 
 
-      @item1 = create(:item)
-      @item2 = create(:item)
-      @item3 = create(:item)
-      
-      visit "/items/#{@item1.id}"
-      click_on "Add To Cart"
-      visit "/items/#{@item2.id}"
-      click_on "Add To Cart"
-      visit "/items/#{@item3.id}"
-      click_on "Add To Cart"
-
-      visit '/cart'
-    end 
 
     
-    it "I see a button or link indicating that I can check out" do 
-      within "#cart-functions" do 
-        expect(page).to  have_link("Checkout")
-      end 
+  it "I see a button or link indicating that I can check out" do 
+    within "#cart-functions" do 
+      expect(page).to  have_link("Checkout")
     end 
   end
 end 
