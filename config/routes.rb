@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  
+
   # resources :sessions, only: [:new, :create, :destroy]
   # sessions POST   /sessions(.:format)         sessions#create
   # new_session GET /sessions/new(.:format)     sessions#new
@@ -62,5 +62,6 @@ Rails.application.routes.draw do
 
   namespace :profile do
     get "/", to: "dashboard#index"
+    get "/orders", to: "orders#index"
   end
 end
