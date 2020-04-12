@@ -31,11 +31,10 @@ RSpec.describe 'Cart show' do
       expect(current_path).to eq("/orders/new")
     end
   end
-
   describe 'When I havent added items to my cart' do
     it 'There is not a link to checkout' do
       visit "/cart"
-
+  
       expect(page).to_not have_link("Checkout")
     end
   end
