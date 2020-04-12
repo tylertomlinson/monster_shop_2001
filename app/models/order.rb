@@ -8,4 +8,16 @@ class Order <ApplicationRecord
   def grandtotal
     item_orders.sum('price * quantity')
   end
+
+  def total_quantity
+    item_orders.sum(:quantity)
+  end
+
+  def cancel
+    item_orders.where(status: "fulfilled").each do |item_order|
+      Item.find(item_order.item_id).increment(:inventory, by = item_order.quantity).save!
+    end
+    item_orders.update(status: "unfulfilled")
+    update(status: "cancelled")
+  end
 end

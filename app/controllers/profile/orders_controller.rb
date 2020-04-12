@@ -5,9 +5,14 @@ class Profile::OrdersController < ApplicationController
     @orders = Order.where(user_id: current_user.id)
   end
 
-  private
+  def show
+    @order = Order.find(params[:id])
+  end
 
-  def require_current_user
-    render file: "/public/404" unless current_user
+  def destroy
+    order = Order.find(params[:id])
+    order.cancel
+    flash[:notice] = "Order ##{order.id} has been cancelled"
+    redirect_to profile_path
   end
 end
