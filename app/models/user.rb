@@ -5,4 +5,6 @@ class User < ApplicationRecord
   belongs_to :merchant, optional: true
 
   enum role: %w(regular merchant admin)
+
+  has_many :orders
 end
