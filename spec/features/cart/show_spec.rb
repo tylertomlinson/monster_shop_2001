@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe 'Cart show' do
+  describe "When I haven't added anything to my cart" do
+    describe "and visit my cart show page" do
+      it "I see a message saying my cart is empty" do
+        visit '/cart'
+        expect(page).to_not have_css(".cart-items")
+        expect(page).to have_content("Cart is currently empty")
+      end
+      
+      it "I do NOT see the link to empty my cart" do
+        visit '/cart'
+        expect(page).to_not have_link("Empty Cart")
+      end
+    end
+  end
+
   describe 'When I have added items to my cart' do
     describe 'and visit my cart path' do
       before(:each) do
@@ -88,22 +103,13 @@ RSpec.describe 'Cart show' do
         end
         expect(page).to have_no_content(@tire.name)
       end
-    end
-  end
 
-  describe "When I haven't added anything to my cart" do
-    describe "and visit my cart show page" do
-      it "I see a message saying my cart is empty" do
-        visit '/cart'
-        expect(page).to_not have_css(".cart-items")
-        expect(page).to have_content("Cart is currently empty")
-      end
-
-      it "I do NOT see the link to empty my cart" do
-        visit '/cart'
-        expect(page).to_not have_link("Empty Cart")
-      end
-
+      it "I have to login or register to checkout" do
+        visit "/cart"
+        
+        expect(page).to have_link('register')
+        expect(page).to have_link('log in')
+      end 
     end
   end
 end

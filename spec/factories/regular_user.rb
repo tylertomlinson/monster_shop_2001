@@ -8,5 +8,6 @@ FactoryBot.define do
     email     { Faker::Internet.email }
     password  { "password123" }
     role      { 0 }
+    merchant_id { nil }
   end
 end
