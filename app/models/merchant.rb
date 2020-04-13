@@ -8,7 +8,7 @@ class Merchant <ApplicationRecord
                         :city,
                         :state,
                         :zip
-
+  validates :active?, inclusion: [true, false]
 
   def no_orders?
     item_orders.empty?
@@ -25,5 +25,4 @@ class Merchant <ApplicationRecord
   def distinct_cities
     item_orders.distinct.joins(:order).pluck(:city)
   end
-
 end
