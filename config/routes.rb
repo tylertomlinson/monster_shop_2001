@@ -3,44 +3,27 @@ Rails.application.routes.draw do
 
   get "/", to: "welcome#index"
 
+  get "/register", to: "users#new"
+  post "/register", to: "users#create"
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
-  resources :merchants
-
-  get "/items", to: "items#index"
-  get "/items/:id", to: "items#show"
-  get "/items/:id/edit", to: "items#edit"
-  patch "/items/:id", to: "items#update"
-  get "/merchants/:merchant_id/items", to: "items#index"
-  get "/merchants/:merchant_id/items/new", to: "items#new"
-  post "/merchants/:merchant_id/items", to: "items#create"
-  delete "/items/:id", to: "items#destroy"
-
-  get "/items/:item_id/reviews/new", to: "reviews#new"
-  post "/items/:item_id/reviews", to: "reviews#create"
-
-  # resources :reviews, only: [:edit, :update, :destroy]
-  get "/reviews/:id/edit", to: "reviews#edit"
-  patch "/reviews/:id", to: "reviews#update"
-  delete "/reviews/:id", to: "reviews#destroy"
 
   post "/cart/:item_id", to: "cart#add_item"
   get "/cart", to: "cart#show"
   delete "/cart", to: "cart#empty"
   delete "/cart/:item_id", to: "cart#remove_item"
 
-  get "/orders/new", to: "orders#new"
-  post "/orders", to: "orders#create"
-  get "/orders/:id", to: "orders#show"
+  resources :merchants do
+    resources :items, only: [:index, :new, :create]
+  end
 
-  get "/register", to: "users#new"
-  post "/register", to: "users#create"
-  get "/profile/edit", to: "users#edit"
-  patch "/profile", to: "users#update"
-  get "/profile/edit_password", to: "users#edit_password"
-  patch "/profile/edit_password", to: "users#update_password"
+  resources :items, only: [:index, :show, :edit, :update, :destroy] do
+    resources :reviews, only: [:new, :create]
+  end
+
+  resources :reviews, only: [:edit, :update, :destroy]
 
   namespace :merchant do
     get "/", to: "dashboard#index"
@@ -54,4 +37,11 @@ Rails.application.routes.draw do
     get "/", to: "dashboard#index"
     resources :orders, only: [:index, :show, :destroy]
   end
+
+  resources :orders, only: [:new, :create, :show]
+  
+  get "/profile/edit", to: "users#edit"
+  patch "/profile", to: "users#update"
+  get "/profile/edit_password", to: "users#edit_password"
+  patch "/profile/edit_password", to: "users#update_password"
 end
