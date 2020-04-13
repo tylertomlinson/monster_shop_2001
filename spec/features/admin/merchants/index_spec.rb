@@ -13,7 +13,6 @@ RSpec.describe "As an Admin" do
   end
 
   it "I can visit the admin's merchant index page" do
-
     expect(page).to have_link("New Merchant")
 
     within("#merchant-#{@merchant1.id}") do
