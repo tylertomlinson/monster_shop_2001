@@ -17,20 +17,20 @@ RSpec.describe "As a user" do
   it "I can see all my orders at /profile/orders" do
     within("#order-#{@order_1.id}") do
       expect(page).to have_link("Order ##{@order_1.id}", href: "/profile/orders/#{@order_1.id}")
-      expect(page).to have_content("Date created: #{@order_1.created_at}")
-      expect(page).to have_content("Date updated: #{@order_1.updated_at}")
-      expect(page).to have_content("Status: #{@order_1.status}")
-      expect(page).to have_content("Item quantity: #{@order_1.items.length}")
-      expect(page).to have_content("Grand total: #{@order_1.grandtotal}")
+      expect(page).to have_content(@order_1.created_at.strftime("%m/%d/%Y"))
+      expect(page).to have_content(@order_1.updated_at.strftime("%m/%d/%Y"))
+      expect(page).to have_content(@order_1.status)
+      expect(page).to have_content(@order_1.items.length)
+      expect(page).to have_content("$#{@order_1.grandtotal}0")
     end
 
     within("#order-#{@order_2.id}") do
       expect(page).to have_link("Order ##{@order_2.id}", href: "/profile/orders/#{@order_2.id}")
-      expect(page).to have_content("Date created: #{@order_2.created_at}")
-      expect(page).to have_content("Date updated: #{@order_2.updated_at}")
-      expect(page).to have_content("Status: #{@order_2.status}")
-      expect(page).to have_content("Item quantity: #{@order_2.items.length}")
-      expect(page).to have_content("Grand total: #{@order_2.grandtotal}")
+      expect(page).to have_content(@order_2.created_at.strftime("%m/%d/%Y"))
+      expect(page).to have_content(@order_2.updated_at.strftime("%m/%d/%Y"))
+      expect(page).to have_content(@order_2.status)
+      expect(page).to have_content(@order_2.items.length)
+      expect(page).to have_content("$#{@order_2.grandtotal}0")
     end
   end
 end
