@@ -114,6 +114,19 @@ RSpec.describe "Items Index Page" do
           expect(page).to have_content(@item4.quantity_ordered)
           expect(page).to have_link(@item5.name)
           expect(page).to have_content(@item5.quantity_ordered)
+        end 
+
+        within '#least-popular-items' do
+          expect(page).to have_link(@item1.name)
+          expect(page).to have_content(@item1.quantity_ordered)
+          expect(page).to have_link(@item2.name)
+          expect(page).to have_content(@item2.quantity_ordered)
+          expect(page).to have_link(@item3.name)
+          expect(page).to have_content(@item3.quantity_ordered)
+          expect(page).to have_link(@item4.name)
+          expect(page).to have_content(@item4.quantity_ordered)
+          expect(page).to have_link(@item5.name)
+          expect(page).to have_content(@item5.quantity_ordered)
         end
       end
     end
