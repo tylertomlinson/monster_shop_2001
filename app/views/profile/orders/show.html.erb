@@ -1,17 +1,32 @@
-<h1>Order #<%= @order.id %></h1>
- <%= link_to "Cancel Order", profile_order_path, method: :delete  %>
-<p>Date created: <%= @order.created_at %> </p>
-<p>Date updated: <%= @order.updated_at %></p>
-<p>Status: <%= @order.status %></p>
-<% @order.item_orders.each do |item_order| %>
-  <article id="item_order-<%= item_order.item.id %>">
-    <p>Name: <%= item_order.item.name %></p>
-    <p>Description: <%= item_order.item.description %></p>
-    <%= image_tag item_order.item.image %>
-    <p>Quantity: <%= item_order.quantity %></p>
-    <p>Price: <%= number_to_currency(item_order.item.price) %></p>
-    <p>Subtotal: <%= number_to_currency(item_order.subtotal) %></p>
-  </article>
-<% end %>
-<p>Total quantity: <%= @order.total_quantity %></p>
-<p>Grand total: <%= number_to_currency(@order.grandtotal) %></p>
+<h1 align = "center">Order #<%= @order.id %></h1>
+<p>Date created: <%= @order.created_at.strftime("%m/%d/%Y") %><br/>
+Date updated: <%= @order.updated_at.strftime("%m/%d/%Y") %><br/>
+Status: <%= @order.status %><br/>
+<%= link_to "Cancel Order", profile_order_path, method: :delete %></p>
+<center>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+  <% @order.item_orders.each do |item_order|%>
+    <tr>
+    <section id = "item-<%=item_order.item_id%>">
+        <td><p><img align = "center" class="order-image" src= <%= item_order.item.image %>>
+        <%= item_order.item.name %></p></td>
+        <td><p><%= item_order.item.description %></p></td>
+        <td><p><%= number_to_currency(item_order.price)%></p></td>
+        <td><p><%= item_order.quantity%></p></td>
+        <td><p><%= number_to_currency(item_order.subtotal)%></p></td>
+      </section>
+    </tr>
+  <% end %>
+</table>
+
+<section id="grandtotal">
+  <p>Grand total: <%=number_to_currency(@order.grandtotal)%></p>
+</section>
+<p>Total quantity: <%= @order.total_quantity %><br/>
