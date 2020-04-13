@@ -7,18 +7,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  # resources :sessions, only: [:new, :create, :destroy]
-  # sessions POST   /sessions(.:format)         sessions#create
-  # new_session GET /sessions/new(.:format)     sessions#new
-  # session DELETE /sessions/:id(.:format)      sessions#destroy
-
-  get "/merchants", to: "merchants#index"
-  get "/merchants/new", to: "merchants#new"
-  get "/merchants/:id", to: "merchants#show"
-  post "/merchants", to: "merchants#create"
-  get "/merchants/:id/edit", to: "merchants#edit"
-  patch "/merchants/:id", to: "merchants#update"
-  delete "/merchants/:id", to: "merchants#destroy"
+  resources :merchants
 
   get "/items", to: "items#index"
   get "/items/:id", to: "items#show"
@@ -32,6 +21,7 @@ Rails.application.routes.draw do
   get "/items/:item_id/reviews/new", to: "reviews#new"
   post "/items/:item_id/reviews", to: "reviews#create"
 
+  # resources :reviews, only: [:edit, :update, :destroy]
   get "/reviews/:id/edit", to: "reviews#edit"
   patch "/reviews/:id", to: "reviews#update"
   delete "/reviews/:id", to: "reviews#destroy"
