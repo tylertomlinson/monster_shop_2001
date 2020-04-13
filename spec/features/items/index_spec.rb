@@ -66,7 +66,7 @@ RSpec.describe "Items Index Page" do
 
     it "can find all active items" do
       expected = Item.active_items
-      expect(expected.count).to eq(8)
+      expect(expected.count).to eq(4)
     end
 
     describe 'Area with statistics:' do
