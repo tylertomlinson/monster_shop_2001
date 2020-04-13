@@ -2,26 +2,26 @@
 
 <% if !@items.empty? %>
 <center>
-<table class = "cart-items">
-  <tr>
-    <th>Item</th>
-    <th>Sold By</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <th>Subtotal</th>
-  </tr>
-  <% @items.each do |item,quantity| %>
-    <tr id= "cart-item-<%=item.id%>">
+  <table class="cart-items">
+    <tr>
+      <th>Item</th>
+      <th>Sold By</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+    </tr>
+    <% @items.each do |item,quantity| %>
+    <tr id="cart-item-<%=item.id%>">
       <td>
-        <p align = "center">
+        <p align="center">
           <span>
-            <img align = "center" id="cart-image" src= <%= item.image %>>
+            <img align="center" id="cart-image" src=<%= item.image %>>
             <%=link_to item.name, "/items/#{item.id}" %>
           </span>
         </p>
       </td>
       <td>
-        <p align = "center">
+        <p align="center">
           <%=link_to item.merchant.name, "/merchants/#{item.merchant.id}"%>
         </p>
       </td>
@@ -37,18 +37,23 @@
           </p>
           <p><%= link_to "Remove", "/cart/#{item.id}", method: :delete %></p>
         </center>
-        </td>
+      </td>
       <td>
         <p><%=number_to_currency(cart.subtotal(item))%></p>
-    </td>
+      </td>
     </tr>
-  <% end %>
-</table>
-  <p>Total: <%= number_to_currency(cart.total) %></p>
-  <p><%= link_to "Empty Cart", "/cart", method: :delete %></p>
-  <p><%= link_to "Checkout", "/orders/new", method: :get %></p>
-<% else %>
-  <h3 align= "center">Cart is currently empty</h3>
-<% end %>
-<table>
+    <% end %>
+  </table>
+  <section id="cart-functions">
+    <p>Total: <%= number_to_currency(cart.total) %></p>
+    <p><%= link_to "Empty Cart", "/cart", method: :delete %></p>
+    <% if !current_user %>
+    <p>You need to <%= link_to "register", "/register" %> or <%= link_to "log in", "/login" %> to checkout</p>
+    <% else %>
+    <p> <%= link_to "Checkout", "/orders/new", method: :get %> </p>
+    <% end %>
+    <% else %>
+  </section>
+  <h3 align="center">Cart is currently empty</h3>
 </center>
+<% end %>
