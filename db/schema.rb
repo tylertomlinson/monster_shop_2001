@@ -71,13 +71,6 @@ ActiveRecord::Schema.define(version: 20200412012224) do
     t.index ["item_id"], name: "index_reviews_on_item_id"
   end
 
-  create_table "user_orders", force: :cascade do |t|
-    t.bigint "order_id"
-    t.bigint "user_id"
-    t.index ["order_id"], name: "index_user_orders_on_order_id"
-    t.index ["user_id"], name: "index_user_orders_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "address"
