@@ -48,14 +48,12 @@
     <p>Total: <%= number_to_currency(cart.total) %></p>
     <p><%= link_to "Empty Cart", "/cart", method: :delete %></p>
     <% if !current_user %>
-    <p> You need to register or login to checkout </p>
-    <p> <%= link_to "log in", "/login" %> </p>
-    <p> <%= link_to "register", "/register" %> </p>
+    <p>You need to <%= link_to "register", "/register" %> or <%= link_to "log in", "/login" %> to checkout</p>
     <% else %>
     <p> <%= link_to "Checkout", "/orders/new", method: :get %> </p>
     <% end %>
     <% else %>
-    </section>
-    <h3 align="center">Cart is currently empty</h3>
+  </section>
+  <h3 align="center">Cart is currently empty</h3>
 </center>
 <% end %>
