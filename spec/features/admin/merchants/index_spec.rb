@@ -78,4 +78,25 @@ RSpec.describe "As an Admin" do
       expect(page).to have_link("Disable Merchant")
     end
   end
+
+  it "When I enable a merchant, its items are activated" do
+    create(:item, merchant: @merchant1)
+    create(:item, merchant: @merchant1)
+
+    within("#merchant-#{@merchant1.id}") do
+      click_link("Disable Merchant")
+    end
+
+    within("#merchant-#{@merchant1.id}") do
+      click_link("Enable Merchant")
+    end
+
+    visit "/merchants/#{@merchant1.id}/items"
+
+    @merchant1.items.each do |item|
+      within("#item-#{item.id}") do
+        expect(page).to have_content("Active")
+      end
+    end
+  end
 end
