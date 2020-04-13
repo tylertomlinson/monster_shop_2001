@@ -25,4 +25,11 @@ class Merchant <ApplicationRecord
   def distinct_cities
     item_orders.distinct.joins(:order).pluck(:city)
   end
+
+  def toggle_all_items_status
+    items.each do |item|
+      item.toggle(:active?)
+      item.save
+    end
+  end
 end
