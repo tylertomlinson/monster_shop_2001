@@ -54,5 +54,22 @@ describe Merchant, type: :model do
       expect(@meg.distinct_cities).to include("Hershey")
     end
 
+    it 'toggle_all_items_status' do
+      create(:item, merchant: @meg, active?: true)
+      create(:item, merchant: @meg, active?: true)
+
+      @meg.toggle_all_items_status
+
+      @meg.items.each do |item|
+        expect(item.active?).to eq(false)
+      end
+
+      @meg.toggle_all_items_status
+
+      @meg.items.each do |item|
+        expect(item.active?).to eq(true)
+      end
+    end
+
   end
 end
