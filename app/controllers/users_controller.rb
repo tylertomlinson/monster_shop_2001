@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Welcome #{@user.name}! You are now registered and logged in!"
+      flash[:success] = "Welcome #{@user.name}! You are now registered and logged in!"
       redirect_to "/profile"
     else
       flash[:error] = @user.errors.full_messages.to_sentence
@@ -20,9 +20,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    if @user.save
-      flash[:notice] = "Your profile has been updated."
+    if @user.update(user_params)
+      flash[:success] = "Your profile has been updated."
       redirect_to "/profile"
     else
       flash[:error] = @user.errors.full_messages.to_sentence
@@ -34,7 +33,7 @@ class UsersController < ApplicationController
     user = current_user
     user.update(user_params)
     if user.save
-      flash[:notice] = "Your password has been updated."
+      flash[:success] = "Your password has been updated."
       redirect_to '/profile'
     else
       flash[:error] = user.errors.full_messages.to_sentence

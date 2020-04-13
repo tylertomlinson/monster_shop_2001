@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     unless current_user.nil?
       login_redirect
-      flash[:notice] = "You are already logged in!"
+      flash[:error] = "You are already logged in!"
     end
   end
 
@@ -22,15 +22,15 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:cart)
     session.delete(:user_id)
-    flash[:notice] = "You have successfully logged out!"
+    flash[:success] = "You have successfully logged out!"
     redirect_to "/"
   end
 
   private
 
   def login_redirect
-    redirect_to admin_path if current_admin?
-    redirect_to merchant_path if current_merchant?
-    redirect_to profile_path if current_regular?
+    redirect_to "/admin" if current_admin?
+    redirect_to "/merchant" if current_merchant?
+    redirect_to "/profile" if current_regular?
   end
 end

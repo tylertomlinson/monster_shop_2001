@@ -12,7 +12,7 @@ class Profile::OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     order.cancel
-    flash[:notice] = "Order ##{order.id} has been cancelled"
+    flash[:success] = "Order ##{order.id} has been cancelled"
     redirect_to profile_path
   end
 end

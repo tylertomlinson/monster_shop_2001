@@ -1,11 +1,24 @@
-<h1>My Orders</h1>
-<% @orders.each do |order| %>
-  <article id="order-<%= order.id %>">
-    <%= link_to "Order ##{order.id}", "/profile/orders/#{order.id}" %>
-    <p>Date created: <%= order.created_at %></p>
-    <p>Date updated: <%= order.updated_at %></p>
-    <p>Status: <%= order.status %></p>
-    <p>Item quantity: <%= order.items.length %></p>
-    <p>Grand total: <%= order.grandtotal %></p>
-  </article>
-<% end %>
+<h1 align = "center">My Orders</h1>
+<center>
+  <table>
+    <tr>
+      <th>Order</th>
+      <th>Date Created</th>
+      <th>Date Updated</th>
+      <th>Status</th>
+      <th>Item Quantity</th>
+      <th>Grand Total</th>
+    </tr>
+  <% @orders.each do |order|%>
+    <tr>
+    <section id = "order-<%=order.id%>">
+        <td><p><%= link_to "Order ##{order.id}", "/profile/orders/#{order.id}" %></p></td>
+        <td><p><%= order.created_at.strftime("%m/%d/%Y") %></p></td>
+        <td><p><%= order.updated_at.strftime("%m/%d/%Y") %></p></td>
+        <td><p><%= order.status %></p></td>
+        <td><p><%= order.items.length %></p></td>
+        <td><p><%= number_to_currency(order.grandtotal) %></p></td>
+      </section>
+    </tr>
+  <% end %>
+</table>

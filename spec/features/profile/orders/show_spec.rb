@@ -17,18 +17,18 @@ RSpec.describe "As a user" do
     click_link "Order ##{@order_1.id}"
     expect(current_path).to eq("/profile/orders/#{@order_1.id}")
     expect(page).to have_content("Order ##{@order_1.id}")
-    expect(page).to have_content("Date created: #{@order_1.created_at}")
-    expect(page).to have_content("Date updated: #{@order_1.updated_at}")
+    expect(page).to have_content("Date created: #{@order_1.created_at.strftime("%m/%d/%Y")}")
+    expect(page).to have_content("Date updated: #{@order_1.updated_at.strftime("%m/%d/%Y")}")
     expect(page).to have_content("Status: #{@order_1.status}")
 
     @order_1.item_orders.each do |item_order|
-      within("#item_order-#{item_order.item.id}") do
-        expect(page).to have_content("Name: #{item_order.item.name}")
-        expect(page).to have_content("Description: #{item_order.item.description}")
+      within("#item-#{item_order.item.id}") do
+        expect(page).to have_content(item_order.item.name)
+        expect(page).to have_content(item_order.item.description)
         expect(page).to have_css("img[src*='#{item_order.item.image}']")
-        expect(page).to have_content("Quantity: #{item_order.quantity}")
-        expect(page).to have_content("Price: $#{item_order.item.price}.00")
-        expect(page).to have_content("Subtotal: $#{item_order.subtotal}0")
+        expect(page).to have_content(item_order.quantity)
+        expect(page).to have_content("$#{item_order.item.price}.00")
+        expect(page).to have_content("$#{item_order.subtotal}0")
       end
     end
 
