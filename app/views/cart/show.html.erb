@@ -1,6 +1,6 @@
 <h1>Cart</h1>
 
-<% if !@items.empty? %>
+<% unless @items.empty? %>
 <center>
 <table class = "cart-items">
   <tr>
@@ -15,7 +15,7 @@
       <td>
         <p align = "center">
           <span>
-            <img align = "center" id="cart-image" src= <%= item.image %>>
+            <img align = "center" class="cart-image" src= <%= item.image %>>
             <%=link_to item.name, "/items/#{item.id}" %>
           </span>
         </p>
