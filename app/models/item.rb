@@ -16,6 +16,24 @@ class Item <ApplicationRecord
     where(active?: true)
   end
 
+  def self.most_popular(limit)
+    joins(:item_orders)
+    .group(:id)
+    .order('SUM(item_orders.quantity)DESC')
+    .limit(limit)
+  end
+
+  def self.least_popular(limit)
+    joins(:item_orders)
+    .group(:id)
+    .order('SUM(item_orders.quantity)ASC')
+    .limit(limit)
+  end
+
+  def quantity_ordered
+    item_orders.sum(:quantity)
+  end
+
   def average_review
     reviews.average(:rating)
   end

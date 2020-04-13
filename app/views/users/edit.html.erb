@@ -18,12 +18,6 @@
 
     <%= label_tag :email %><br/>
     <%= text_field_tag :email, @user.nil? ? ' ' : @user.email %><br/>
-
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %><br/>
-
-    <%= label_tag :confirm_password %><br/>
-    <%= password_field_tag :password_confirmation %><br/>
-
+    
     <%=submit_tag "Submit"%>
 <%end%>

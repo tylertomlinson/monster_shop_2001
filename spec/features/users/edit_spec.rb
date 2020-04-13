@@ -32,11 +32,9 @@ RSpec.describe 'Editing user profile', type: :feature do
     fill_in :city, with: "Test City"
     fill_in :state, with: "Test State"
     fill_in :zip, with: "11111"
-    fill_in :password, with: "testpassword"
-    fill_in :password_confirmation, with: "testpassword"
-
+  
     click_on "Submit"
-    
+
     expect(current_path).to eq('/profile')
 
     expect(page).to have_content("Your profile has been updated.")
@@ -63,8 +61,6 @@ RSpec.describe 'Editing user profile', type: :feature do
     fill_in :city, with: ""
     fill_in :state, with: "Test State"
     fill_in :zip, with: ""
-    fill_in :password, with: "testpassword"
-    fill_in :password_confirmation, with: "testpassword"
 
     click_on "Submit"
 

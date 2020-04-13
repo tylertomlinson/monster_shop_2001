@@ -66,7 +66,69 @@ RSpec.describe "Items Index Page" do
 
     it "can find all active items" do
       expected = Item.active_items
-      expect(expected.count).to eq(8)
+      expect(expected.count).to eq(4)
+    end
+
+    describe 'Area with statistics:' do
+      before(:each) do
+
+        @user1 = create(:regular_user)
+        @user2 = create(:regular_user)
+        @bike_shop = Merchant.create(name: "Brian's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
+        @item1 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
+        @item2 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
+        @item3 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
+        @item4 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
+        @item5 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
+
+        @order1 = @user1.orders.create!(name: 'Test Name', address: '123 Test', city: 'Test City', state: 'Test State', zip: 10000)
+
+        @item_order1_info = { order_id: @order1.id, item_id: @item1.id, price: @item1.price, quantity: 35 }
+        ItemOrder.create!(@item_order1_info)
+
+        @item_order2_info = { order_id: @order1.id, item_id: @item2.id, price: @item2.price, quantity: 60 }
+        ItemOrder.create!(@item_order2_info)
+
+        @item_order3_info = { order_id: @order1.id, item_id: @item3.id, price: @item3.price, quantity: 40 }
+        ItemOrder.create!(@item_order3_info)
+
+        @item_order4_info = { order_id: @order1.id, item_id: @item4.id, price: @item4.price, quantity: 35 }
+        ItemOrder.create!(@item_order4_info)
+
+        @item_order5_info = { order_id: @order1.id, item_id: @item5.id, price: @item5.price, quantity: 50 }
+        ItemOrder.create!(@item_order5_info)
+      end
+
+      it "5 most popular items with quantity ordered" do
+
+        visit '/items'
+
+        within '#most-popular-items' do
+          expect(page).to have_link(@item1.name)
+          expect(page).to have_content(@item1.quantity_ordered)
+          expect(page).to have_link(@item2.name)
+          expect(page).to have_content(@item2.quantity_ordered)
+          expect(page).to have_link(@item3.name)
+          expect(page).to have_content(@item3.quantity_ordered)
+          expect(page).to have_link(@item4.name)
+          expect(page).to have_content(@item4.quantity_ordered)
+          expect(page).to have_link(@item5.name)
+          expect(page).to have_content(@item5.quantity_ordered)
+        end
+
+        within '#least-popular-items' do
+          expect(page).to have_link(@item1.name)
+          expect(page).to have_content(@item1.quantity_ordered)
+          expect(page).to have_link(@item2.name)
+          expect(page).to have_content(@item2.quantity_ordered)
+          expect(page).to have_link(@item3.name)
+          expect(page).to have_content(@item3.quantity_ordered)
+          expect(page).to have_link(@item4.name)
+          expect(page).to have_content(@item4.quantity_ordered)
+          expect(page).to have_link(@item5.name)
+          expect(page).to have_content(@item5.quantity_ordered)
+        end
+      end
     end
   end
 end
