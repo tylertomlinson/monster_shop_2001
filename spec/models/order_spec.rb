@@ -55,5 +55,9 @@ describe Order, type: :model do
       expect(@item_order_2.status).to eq("unfulfilled")
       expect(@order_1.status).to eq("cancelled")
     end
+
+    it 'status' do 
+      expect(@order_1.status).to eq('pending')
+    end
   end
 end

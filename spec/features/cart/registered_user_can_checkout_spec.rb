@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'Cart show' do
-  describe 'When I have added items to my cart' do
+describe 'As a registered user' do 
+  describe "When I add items to my cart" do 
     before(:each) do
       @mike = Merchant.create(name: "Mike's Print Shop", address: '123 Paper Rd.', city: 'Denver', state: 'CO', zip: 80203)
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
@@ -21,7 +21,8 @@ RSpec.describe 'Cart show' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
     
-    it 'Theres a link to checkout' do
+    it "And I click the button or link to check out and fill out order info and click create order" do 
+
       visit "/cart"
 
       expect(page).to have_link("Checkout")
@@ -29,13 +30,20 @@ RSpec.describe 'Cart show' do
       click_on "Checkout"
 
       expect(current_path).to eq("/orders/new")
-    end
-  end
-  describe 'When I havent added items to my cart' do
-    it 'There is not a link to checkout' do
+
+      fill_in :name,	with: "Mike Dao" 
+      fill_in :address,	with: "123 Test Street" 
+      fill_in :city,	with: "Denver" 
+      fill_in :state,	with: "Colorado" 
+      fill_in :zip,	with: "80234"
+      click_on 'Create Order'
+      
+      expect(current_path).to  eq("/profile/orders")
+      expect(page).to have_content("Your order has been made!") 
+      expect(page).to have_link("Order ##{Order.first.id}") 
       visit "/cart"
-  
-      expect(page).to_not have_link("Checkout")
+      expect(page).to_not have_css(".cart-items")
+      expect(page).to have_content("Cart is currently empty")
     end
   end
 end
