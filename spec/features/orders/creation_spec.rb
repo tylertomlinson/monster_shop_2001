@@ -16,7 +16,7 @@ RSpec.describe("Order Creation") do
       @pencil = @mike.items.create(name: "Yellow Pencil", description: "You can write on paper with it!", price: 2, image: "https://images-na.ssl-images-amazon.com/images/I/31BlVr01izL._SX425_.jpg", inventory: 100)
       @user = create(:regular_user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-      
+
       visit "/items/#{@paper.id}"
       click_on "Add To Cart"
       visit "/items/#{@paper.id}"
@@ -48,6 +48,8 @@ RSpec.describe("Order Creation") do
       new_order = Order.last
 
       expect(current_path).to eq("/profile/orders")
+      visit "/orders/#{new_order.id}"
+      expect(current_path).to eq("/orders/#{new_order.id}")
 
       within '.shipping-address' do
         expect(page).to have_content(name)
