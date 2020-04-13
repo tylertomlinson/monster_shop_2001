@@ -9,7 +9,7 @@ RSpec.describe "User can login" do
       visit "/"
 
       click_link "Login"
-      
+
       expect(current_path).to eq("/login")
 
       fill_in :email,	with: "#{user.email}"
@@ -90,7 +90,7 @@ RSpec.describe "User can login" do
 
       click_button "Sign In"
 
-      expect(current_path).to eq(merchant_path)
+      expect(current_path).to eq("/merchant")
       expect(page).to have_content("Welcome #{merchant.name}, you have successfully logged in!")
     end
 
@@ -110,7 +110,7 @@ RSpec.describe "User can login" do
       visit "/login"
 
       expect(page).to have_content("You are already logged in!")
-      expect(current_path).to eq(merchant_path)
+      expect(current_path).to eq("/merchant")
     end
   end
 

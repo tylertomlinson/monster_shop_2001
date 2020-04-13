@@ -29,8 +29,8 @@ class SessionsController < ApplicationController
   private
 
   def login_redirect
-    redirect_to admin_path if current_admin?
-    redirect_to merchant_path if current_merchant?
-    redirect_to profile_path if current_regular?
+    redirect_to "/admin" if current_admin?
+    redirect_to "/merchant" if current_merchant?
+    redirect_to "/profile" if current_regular?
   end
 end
