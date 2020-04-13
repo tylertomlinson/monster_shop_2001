@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   def new
     unless current_user.nil?
       login_redirect
-      flash[:notice] = "You are already logged in!"
+      flash[:error] = "You are already logged in!"
     end
   end
 
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:cart)
     session.delete(:user_id)
-    flash[:notice] = "You have successfully logged out!"
+    flash[:success] = "You have successfully logged out!"
     redirect_to "/"
   end
 
