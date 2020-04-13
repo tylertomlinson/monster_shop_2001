@@ -83,6 +83,11 @@ describe Item, type: :model do
       expect([Item.least_popular(5)[0].name, Item.least_popular(5)[1].name, Item.least_popular(5)[2].name, Item.least_popular(5)[3].name, Item.least_popular(5)[4].name]).to eq([least_popular.name, item4.name, item3.name, item5.name, most_popular.name])
     end
 
+    it "can find all active items" do
+      expected = Item.active_items
+      expect(expected.count).to eq(7)
+    end
+
     it "quantity ordered" do
       item_1 = @bike_shop.items.create!(name: 'Chain', description: "It'll never break!", price: 50, image: 'https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588', inventory: 10)
       item_2 = @bike_shop.items.create!(name: 'Chain2', description: "It'll never break!", price: 50, image: 'https://www.rei.com/media/b61d1379-ec0e-4760-9247-57ef971af0ad?size=784x588', inventory: 15)

@@ -80,7 +80,7 @@ RSpec.describe "Items Index Page" do
         @item3 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
         @item4 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
         @item5 = @bike_shop.items.create!name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 1000
-        
+
         @order1 = @user1.orders.create!(name: 'Test Name', address: '123 Test', city: 'Test City', state: 'Test State', zip: 10000)
 
         @item_order1_info = { order_id: @order1.id, item_id: @item1.id, price: @item1.price, quantity: 35 }
