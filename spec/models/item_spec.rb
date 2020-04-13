@@ -85,7 +85,7 @@ describe Item, type: :model do
 
     it "can find all active items" do
       expected = Item.active_items
-      expect(expected.count).to eq(3)
+      expect(expected.count).to eq(1)
     end
 
     it "quantity ordered" do
