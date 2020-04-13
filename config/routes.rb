@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/", to: "dashboard#index"
-    get "/merchants", to: "merchants#index"
+    resources :merchants, only: [:index, :update]
   end
 
   namespace :profile do
