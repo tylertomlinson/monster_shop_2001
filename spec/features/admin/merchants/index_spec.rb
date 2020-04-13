@@ -47,4 +47,35 @@ RSpec.describe "As an Admin" do
       expect(page).to have_link("Enable Merchant")
     end
   end
+
+  it "When I disable a merchant, its items are inactivated" do
+    create(:item, merchant: @merchant1)
+    create(:item, merchant: @merchant1)
+
+    within("#merchant-#{@merchant1.id}") do
+      click_link("Disable Merchant")
+    end
+
+    visit "/merchants/#{@merchant1.id}/items"
+
+    @merchant1.items.each do |item|
+      within("#item-#{item.id}") do
+        expect(page).to have_content("Inactive")
+      end
+    end
+  end
+
+  it "I can enable a merchant" do
+    within("#merchant-#{@merchant3.id}") do
+      click_link("Enable Merchant")
+    end
+
+    expect(current_path).to eq("/admin/merchants")
+    expect(page).to have_content("The account for #{@merchant3.name} has been enabled")
+
+    within("#merchant-#{@merchant3.id}") do
+      expect(page).to have_content("Enabled")
+      expect(page).to have_link("Disable Merchant")
+    end
+  end
 end
