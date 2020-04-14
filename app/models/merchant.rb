@@ -9,7 +9,7 @@ class Merchant <ApplicationRecord
                         :city,
                         :state,
                         :zip
-
+  validates :active?, inclusion: [true, false]
 
   def no_orders?
     item_orders.empty?
@@ -27,8 +27,14 @@ class Merchant <ApplicationRecord
     item_orders.distinct.joins(:order).pluck(:city)
   end
 
-  def pending_orders
-    orders.where(status: "pending")
-  end
+  def toggle_all_items_status
+    items.each do |item|
+      item.toggle(:active?)
+      item.save
+    end
 
+    def pending_orders
+      orders.where(status: "pending")
+    end
+  end
 end
