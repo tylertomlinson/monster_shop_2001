@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "admin dashboard page" do
   context "as an admin" do
-    before: :each do 
+    before(:each) do 
         @user = create(:regular_user)
         @admin = create(:admin_user)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
@@ -15,50 +15,49 @@ RSpec.describe "admin dashboard page" do
         @pencil = @mike.items.create(name: "Yellow Pencil", description: "You can write on paper with it!", price: 2, image: "https://images-na.ssl-images-amazon.com/images/I/31BlVr01izL._SX425_.jpg", inventory: 100)
         @helmet = @meg.items.create(name: "Helmet", description: "Protect your brains", price: 50, image: "https://images-na.ssl-images-amazon.com/images/I/31BlVr01izL._SX425_.jpg", inventory: 10)
 
-        @order1 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: 1)
+        @order1 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: "packaged")
         @order1.item_orders.create(item: @tire, price: @tire.price, quantity: 2)
 
-        @order2 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: 0)
+        @order2 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: "pending")
         @order2.item_orders.create(item: @paper, price: @paper.price, quantity: 1)
 
-        @order3 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: 2)
+        @order3 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: "shipped")
         @order3.item_orders.create(item: @pencil, price: @pencil.price, quantity: 3)
 
-        @order4 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: 3)
+        @order4 = @user.orders.create(name: "Daniel", address: "66 Highway", city: "Las Cruces", state: "NM", zip: 88888, status: "cancelled")
         @order4.item_orders.create(item: @helmet, price: @helmet.price, quantity: 6)
-
     end
 
     it "can see all orders in the system with user with link to profile, order id, and when created" do
       
         visit admin_path
 
-        within "#order-#{@order1.id}"
+        within "#order-#{@order1.id}" do
             expect(page).to have_link("#{@order1.user.name}") 
             expect(page).to have_content(@order1.id)
             expect(page).to have_content("Date created: #{@order1.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("Packaged") 
+            expect(page).to have_content("packaged") 
         end
 
-        within "#order-#{@order2.id}"
+        within "#order-#{@order2.id}" do
             expect(page).to have_link("#{@order2.user.name}") 
             expect(page).to have_content(@order2.id)
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("Pending") 
+            expect(page).to have_content("pending") 
         end
 
-        within "#order-#{@order3.id}"
+        within "#order-#{@order3.id}" do
             expect(page).to have_link("#{@order3.user.name}") 
             expect(page).to have_content(@order3.id)
             expect(page).to have_content("Date created: #{@order3.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("Shipped") 
+            expect(page).to have_content("shipped") 
         end
 
-        within "#order-#{@order4.id}"
+        within "#order-#{@order4.id}" do
             expect(page).to have_link("#{@order4.user.name}") 
             expect(page).to have_content(@order4.id)
             expect(page).to have_content("Date created: #{@order4.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("Cancelled") 
+            expect(page).to have_content("cancelled") 
         end
     end
 
@@ -66,15 +65,15 @@ RSpec.describe "admin dashboard page" do
         
         visit admin_path
 
-        within "#order-#{@order1.id}"
+        within "#order-#{@order1.id}" do
             expect(page).to have_link("#{@order1.user.name}") 
             expect(page).to have_content(@order1.id)
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("Packaged") 
-            expect(page).to have_link("Ship Order") 
-            click_link "Ship Order"
-            expect(page).to not_have_content("Cancel") 
-            expect(@order1.status).to eq("Shipped") 
+            expect(page).to have_content("packaged") 
+            expect(page).to have_link("ship order") 
+            click_link "ship order"
+            expect(page).to not_have_content("cancel") 
+            expect(@order1.status).to eq("shipped") 
         end
 
     end
