@@ -39,11 +39,9 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages.to_sentence
       render :edit_password
     end
-
   end
 
   def edit_password
-
   end
 
   private
