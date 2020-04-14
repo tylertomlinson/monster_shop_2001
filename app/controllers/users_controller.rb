@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = "Welcome #{@user.name}! You are now registered and logged in!"
-      redirect_to "/profile"
+      redirect_to profile_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
       render :new
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   end
 
   def edit_password
-    
+
   end
 
   private
