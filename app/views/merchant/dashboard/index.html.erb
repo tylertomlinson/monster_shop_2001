@@ -8,10 +8,10 @@
   <%= "#{@merchant.city}, #{@merchant.state} #{@merchant.zip}" %>
 </section>
 <%= link_to  'View items', '/merchant/items' %>
-  <%# <% @merchant.pending_orders.each do |order| %> 
-    <%# <%= link_to  "Order ##{order.id}", "/merchant/orders/#{order.id}" %>
-    <%# <%= "Date made: #{order.created_at}"%>
-    <%# <%= "Quantity: #{order.total_quantity}"%>
-    <%# <%= "Total Value: #{order.grandtotal}"%>
-  <%# <% end %>
+  <% @merchant.pending_orders.each do |order| %>
+     <%= link_to "Order ##{order.id}", "/merchant/orders/#{order.id}" %>
+     <%= "Date made: #{order.created_at}"%>
+     <%= "Quantity: #{order.total_quantity}"%>
+     <%= "Total Value: #{order.grandtotal}"%>
+   <% end %>
 <% end %>

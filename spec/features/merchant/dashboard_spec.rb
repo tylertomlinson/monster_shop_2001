@@ -29,7 +29,7 @@ RSpec.describe 'merchant_employee', type: :feature do
     user = create(:regular_user)
     @order_1 = user.orders.create!(name: 'Meg', address: '123 Stang Ave', city: 'Hershey', state: 'PA', zip: 17033)
   
-    binding.pry
+
     @item_order_1 = @order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2, status: "pending")
     @item_order_2 = @order_1.item_orders.create!(item: @pull_toy, price: @pull_toy.price, quantity: 3, status: "pending")
   
@@ -37,7 +37,7 @@ RSpec.describe 'merchant_employee', type: :feature do
     visit "/merchant"
 
 
-    expect(page).to have_link(@order_1.id) 
+    expect(page).to have_link("Order ##{@order_1.id}") 
     expect(page).to have_content(@order_1.created_at) 
     expect(page).to have_content(@order_1.total_quantity) 
     expect(page).to have_content(@order_1.grandtotal)
