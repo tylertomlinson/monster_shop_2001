@@ -33,28 +33,28 @@ RSpec.describe "admin dashboard page" do
         visit admin_path
 
         within "#order-#{@order1.id}" do
-            expect(page).to have_link("#{@order1.user.name}") 
+            expect(page).to have_link("#{@order1.name}") 
             expect(page).to have_content(@order1.id)
             expect(page).to have_content("Date created: #{@order1.created_at.strftime("%m/%d/%Y")}")
             expect(page).to have_content("packaged") 
         end
 
         within "#order-#{@order2.id}" do
-            expect(page).to have_link("#{@order2.user.name}") 
+            expect(page).to have_link("#{@order2.name}") 
             expect(page).to have_content(@order2.id)
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
             expect(page).to have_content("pending") 
         end
 
         within "#order-#{@order3.id}" do
-            expect(page).to have_link("#{@order3.user.name}") 
+            expect(page).to have_link("#{@order3.name}") 
             expect(page).to have_content(@order3.id)
             expect(page).to have_content("Date created: #{@order3.created_at.strftime("%m/%d/%Y")}")
             expect(page).to have_content("shipped") 
         end
 
         within "#order-#{@order4.id}" do
-            expect(page).to have_link("#{@order4.user.name}") 
+            expect(page).to have_link("#{@order4.name}") 
             expect(page).to have_content(@order4.id)
             expect(page).to have_content("Date created: #{@order4.created_at.strftime("%m/%d/%Y")}")
             expect(page).to have_content("cancelled") 
@@ -66,14 +66,16 @@ RSpec.describe "admin dashboard page" do
         visit admin_path
 
         within "#order-#{@order1.id}" do
-            expect(page).to have_link("#{@order1.user.name}") 
+            expect(page).to have_link("#{@order1.name}") 
             expect(page).to have_content(@order1.id)
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
             expect(page).to have_content("packaged") 
             expect(page).to have_link("ship order") 
+            expect(page).to have_link("cancel order") 
             click_link "ship order"
-            expect(page).to not_have_content("cancel") 
+            @order1.reload
             expect(@order1.status).to eq("shipped") 
+            expect(page).to have_no_link("cancel order")  
         end
 
     end
@@ -98,3 +100,10 @@ end
 # - pending
 # - shipped
 # - cancelled
+
+# As an admin user
+# When I log into my dashboard, "/admin"
+# Then I see any "packaged" orders ready to ship.
+# Next to each order I see a button to "ship" the order.
+# When I click that button for an order, the status of that order changes to "shipped"
+# And the user can no longer "cancel" the order.
