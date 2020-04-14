@@ -27,7 +27,8 @@ Rails.application.routes.draw do
 
   namespace :merchant do
     get "/", to: "dashboard#index"
-    get "/items", to: "items#index"
+    # get "/items", to: "items#index"
+    resources :items, only: [:index, :show, :update]
   end
 
   namespace :admin do
@@ -40,7 +41,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:new, :create, :show]
-  
+
   get "/profile/edit", to: "users#edit"
   patch "/profile", to: "users#update"
   get "/profile/edit_password", to: "users#edit_password"
