@@ -27,7 +27,6 @@ describe ItemOrder, type: :model do
 
     it "fulfill_item_orders" do
       @item_order_1.fulfill_item_order
-      # @item_order_1.reload
       expect(@item_order_1.item.inventory).to eq(10)
     end
     

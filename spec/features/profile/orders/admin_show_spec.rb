@@ -82,28 +82,3 @@ RSpec.describe "admin dashboard page" do
     
   end
 end
-
-# User Story 32, Admin can see all orders
-
-# As an admin user
-# When I visit my admin dashboard ("/admin")
-# Then I see all orders in the system.
-# For each order I see the following information:
-
-# - user who placed the order, which links to admin view of user profile
-# - order id
-# - date the order was created
-
-# Orders are sorted by "status" in this order:
-
-# - packaged
-# - pending
-# - shipped
-# - cancelled
-
-# As an admin user
-# When I log into my dashboard, "/admin"
-# Then I see any "packaged" orders ready to ship.
-# Next to each order I see a button to "ship" the order.
-# When I click that button for an order, the status of that order changes to "shipped"
-# And the user can no longer "cancel" the order.
