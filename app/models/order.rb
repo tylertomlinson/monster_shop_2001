@@ -4,6 +4,7 @@ class Order <ApplicationRecord
   belongs_to :user
   has_many :item_orders
   has_many :items, through: :item_orders
+  has_many :merchant, through: :item_orders
 
   # enum status: %w(pending packaged shipped cancelled)
 
