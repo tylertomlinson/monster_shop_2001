@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :regular_user, class: User do
-    name      { Faker::Name.name }
+    name      { Faker::TvShows::BreakingBad.character }
     address   { Faker::Address.street_address }
     city      { Faker::Address.city }
     state     { Faker::Address.state }
