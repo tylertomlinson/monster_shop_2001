@@ -6,4 +6,10 @@ class ItemOrder <ApplicationRecord
   def subtotal
     price * quantity
   end
+
+  def fulfill_item_order
+    update(status: "fulfilled")
+    item.increment(:inventory, by = -quantity).save!
+  end
+  
 end

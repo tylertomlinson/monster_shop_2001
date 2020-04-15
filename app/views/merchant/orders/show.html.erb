@@ -1,4 +1,5 @@
 <h1>Order #<%= @order.id %></h1>
+<h2 align = "center">Status: <%= @order.status %></h2>
 <section class = "shipping-address">
   <h1 align = "center">Shipping Info</h1>
   <table>
@@ -26,6 +27,8 @@
       <th>Item</th>
       <th>Price</th>
       <th>Quantity</th>
+      <th>Status</th>
+      <th>Fulfill Item</th>
     </tr>
     <% @order.item_orders.each do |item_order|%>
       <tr><section id = "item-<%=item_order.item_id%>">
@@ -33,6 +36,8 @@
         <%=link_to item_order.item.name, "/merchants/#{item_order.item.merchant_id}/items/#{item_order.item_id}"%></p></td>
         <td><p><%= number_to_currency(item_order.price)%></p></td>
         <td><p><%= item_order.quantity%></p></td>
+        <td><p><%= item_order.status %></p></td>
+        <td><p><%= link_to "fulfill item", "/merchant/item_orders/#{item_order.id}", method: :patch %></p></td>
       </section>
     </tr>
   <% end %>
