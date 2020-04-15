@@ -1,0 +1,20 @@
+
+<h1 align = "center">Order #<%= @order.id %></h1>
+<h2 align = "center">Status: <%= @order.status %></h2>
+<center>
+  <table>
+    <tr>
+      <th>Item</th>
+      <th>Status</th>
+      <th>Fulfill Item</th>
+    </tr>
+  <% @order.item_orders.each do |item_order|%>
+    <tr>
+    <section id = "item_order-<%=item_order.id%>">
+        <td><p><%=item_order.item.name %></p></td>
+        <td><p><%= item_order.status %></p></td>
+        <td><p><%= link_to "fulfill item", "/merchant/item_orders/#{item_order.id}", method: :patch %></p></td>
+      </section>
+    </tr>
+  <% end %>
+</table>

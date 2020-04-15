@@ -28,11 +28,14 @@ Rails.application.routes.draw do
   namespace :merchant do
     get "/", to: "dashboard#index"
     resources :items, only: [:index, :show, :update]
+    resources :orders, only: [:show]
+    resources :item_orders, only: [:update]
   end
 
   namespace :admin do
     get "/", to: "dashboard#index"
     resources :merchants, only: [:index, :update, :show]
+    resources :orders, only: [:update]
   end
 
   namespace :profile do
