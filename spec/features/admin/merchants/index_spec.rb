@@ -67,6 +67,7 @@ RSpec.describe "As an Admin" do
 
   it "I can enable a merchant" do
     within("#merchant-#{@merchant3.id}") do
+      expect(page).to have_content("Disabled")
       click_link("Enable Merchant")
     end
 
@@ -97,6 +98,24 @@ RSpec.describe "As an Admin" do
       within("#item-#{item.id}") do
         expect(page).to have_content("Active")
       end
+    end
+  end
+
+  it "I can see a merchant's information" do
+    within("#merchant-#{@merchant1.id}") do
+      expect(page).to have_link(@merchant1.name, href: "/admin/merchants/#{@merchant1.id}")
+      expect(page).to have_content(@merchant1.city)
+      expect(page).to have_content(@merchant1.state)
+      expect(page).to have_content("Enabled")
+      expect(page).to have_link("Disable Merchant")
+    end
+
+    within("#merchant-#{@merchant3.id}") do
+      expect(page).to have_link(@merchant3.name, href: "/admin/merchants/#{@merchant3.id}")
+      expect(page).to have_content(@merchant3.city)
+      expect(page).to have_content(@merchant3.state)
+      expect(page).to have_content("Disabled")
+      expect(page).to have_link("Enable Merchant")
     end
   end
 
