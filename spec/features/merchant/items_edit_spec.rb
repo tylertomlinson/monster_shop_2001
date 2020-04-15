@@ -28,7 +28,7 @@ RSpec.describe "As a Merchant" do
 
         fill_in 'Name', with: "Test Edit Name"
         fill_in 'Price', with: 1000
-        fill_in 'Description', with: "Test Description"
+        fill_in 'Description', with: "Test Edit Description"
         fill_in 'Image', with: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588"
         fill_in 'Inventory', with: 1001
 
