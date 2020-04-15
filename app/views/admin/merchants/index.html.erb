@@ -3,7 +3,7 @@
 <section class = "grid-container">
   <% @merchants.each do |merchant|%>
     <section class = "grid-item" id = "merchant-<%= merchant.id %>">
-      <h2><%=link_to merchant.name, "/merchants/#{merchant.id}"%></h2>
+      <h2><%=link_to "#{merchant.name}", "/admin/merchants/#{merchant.id}"%></h2>
       <p><%= merchant.active? ? "Enabled" : "Disabled" %></p>
       <%= link_to (merchant.active? ? "Disable Merchant" : "Enable Merchant"), "/admin/merchants/#{merchant.id}?active?=toggle", method: :patch %>
     </section>
