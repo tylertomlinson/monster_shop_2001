@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ActionView::Helpers::TextHelper
   protect_from_forgery with: :exception
 
   helper_method :cart, :current_user, :current_merchant?, :current_admin?,
@@ -30,5 +31,9 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     render file: "/public/404" unless current_admin?
+  end
+
+  def require_merchant
+    render file: "/public/404" unless current_merchant?
   end
 end

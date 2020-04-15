@@ -15,4 +15,10 @@ class Admin::MerchantsController < ApplicationController
       redirect_to admin_merchants_path
     end
   end
+
+  def show
+    @merchants = Merchant.all
+  end
+  
+  
 end
