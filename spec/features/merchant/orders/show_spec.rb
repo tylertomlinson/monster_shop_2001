@@ -26,7 +26,7 @@ RSpec.describe "As a merchant employee" do
 
     @order.item_orders.each do |item_order|
       within("#item-#{item_order.item_id}") do
-        expect(page).to have_link(item_order.item.name href: "/merchants/#{@merchant.id}/items/#{item_order.item.id}")
+        expect(page).to have_link(item_order.item.name, href: "/merchants/#{item_order.item.merchant_id}/items/#{item_order.item_id}")
         expect(page).to have_css("img[src*='#{item_order.item.image}']")
         expect(page).to have_content(item_order.price)
         expect(page).to have_content(item_order.quantity)
