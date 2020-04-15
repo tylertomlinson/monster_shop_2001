@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ActionView::Helpers::TextHelper
   protect_from_forgery with: :exception
 
   helper_method :cart, :current_user, :current_merchant?, :current_admin?,

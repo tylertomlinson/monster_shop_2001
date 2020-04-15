@@ -20,12 +20,12 @@ RSpec.describe "order fulfillment" do
 
         expect(page).to have_content("Status: #{@order_1.status}")
 
-        within "#item_order-#{@item_order1.id}" do
+        within "#item-#{@item_order1.item_id}" do
             expect(page).to have_link("fulfill item")
             click_link "fulfill item"
         end
 
-        within "#item_order-#{@item_order2.id}" do
+        within "#item-#{@item_order2.item_id}" do
             expect(page).to have_link("fulfill item")
             click_link "fulfill item"
         end
