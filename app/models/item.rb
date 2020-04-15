@@ -7,10 +7,12 @@ class Item <ApplicationRecord
   validates_presence_of :name,
                         :description,
                         :price,
-                        :image,
                         :inventory
+  validates_presence_of :image, optional: true
+
   validates_inclusion_of :active?, :in => [true, false]
   validates_numericality_of :price, greater_than: 0
+  validates_numericality_of :inventory, greater_than: 0
 
   def self.active_items
     where(active?: true)
@@ -44,5 +46,9 @@ class Item <ApplicationRecord
 
   def no_orders?
     item_orders.empty?
+  end
+
+  def update_status
+    self.toggle!(:active?)
   end
 end
