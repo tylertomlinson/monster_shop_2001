@@ -133,5 +133,17 @@ describe Item, type: :model do
       expect(item_6.quantity_ordered).to eq(20)
       expect(item_7.quantity_ordered).to eq(10)
     end
+
+    it "update_status" do
+      @chain.update_status
+      @chain.reload
+
+      expect(@chain.active?).to eq(false)
+
+      @chain.update_status
+      @chain.reload
+
+      expect(@chain.active?).to eq(true)
+    end
  end
 end
