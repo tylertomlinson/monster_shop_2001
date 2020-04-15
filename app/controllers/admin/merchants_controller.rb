@@ -19,6 +19,4 @@ class Admin::MerchantsController < ApplicationController
   def show
     @merchants = Merchant.all
   end
-  
-  
 end
