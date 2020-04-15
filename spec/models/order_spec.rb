@@ -59,5 +59,17 @@ describe Order, type: :model do
     it 'status' do 
       expect(@order_1.status).to eq('pending')
     end
+
+    it "package" do
+      expect(@order_1.status).to eq("pending") 
+      @order_1.package
+      expect(@order_1.status).to eq("packaged") 
+    end
+    
+    it "ship" do
+      @order_1.package
+      @order_1.ship
+      expect(@order_1.status).to eq("shipped")
+    end
   end
 end
