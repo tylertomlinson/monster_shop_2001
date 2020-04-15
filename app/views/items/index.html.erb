@@ -41,5 +41,6 @@
     <%= link_to 'Activate', "/merchant/items/#{item.id}", method: :patch if current_merchant? || !@merchant %>
     <% end %>
   </section>
+    <%= link_to "Delete", "/merchant/items/#{item.id}", method: :delete if current_merchant? || !@merchant %>
   <% end %>
 </section>
