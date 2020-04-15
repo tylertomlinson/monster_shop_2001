@@ -51,7 +51,7 @@ RSpec.describe "As a merchant employee" do
     expect(@item1.inventory).to eq(4)
   end
 
-  it "I cannot fulfill an order item whose quantity exceed's that item's inventoryr" do
+  it "I cannot fulfill an order item whose quantity exceeds that item's inventory" do
     within("#item-#{@item_order2.item_id}") do
       expect(page).to have_content("This order contains more items than are in inventory")
       expect(page).to have_no_link("fulfill item")
