@@ -1,5 +1,4 @@
 class Merchant::ItemOrdersController < ApplicationController
-  include ActionView::Helpers::TextHelper
   before_action :require_merchant
 
   def update
