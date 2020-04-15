@@ -1,0 +1,24 @@
+<h1 align = "center">All Orders</h1>
+<center>
+  <table>
+    <tr>
+      <th>Order</th>
+      <th>Order Name</th>
+      <th>Status</th>
+      <th>Date Created</th>
+      <th>Action</th>
+    </tr>
+  <% @orders.each do |order|%>
+    <tr>
+    <section id = "order-<%=order.id%>">
+        <td><p><%= "Order ##{order.id}" %></p></td>
+        <td><p><%= link_to order.name, "/admin/users/#{order.user.id}" %></p></td>
+        <td><p><%= order.status %></p></td>
+        <td><p>Date created: <%= order.created_at.strftime("%m/%d/%Y") %></p></td>
+        <td><p><%= link_to "ship order", "/admin/orders/#{order.id}", method: :patch if order.status == "packaged" %></p>
+        <p><%= link_to "cancel order", "/admin/orders/#{order.id}", method: :delete unless order.status == "shipped" || order.status == "cancelled" %></p></td>
+
+      </section>
+    </tr>
+  <% end %>
+</table>

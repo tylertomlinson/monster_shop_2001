@@ -21,4 +21,14 @@ class Order <ApplicationRecord
     item_orders.update(status: "unfulfilled")
     update(status: "cancelled")
   end
+
+  def package
+    update(status: "packaged")
+  end
+
+  def ship
+    update(status: "shipped")
+  end
+  
+  
 end
