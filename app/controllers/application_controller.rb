@@ -28,10 +28,6 @@ class ApplicationController < ActionController::Base
     render file: "/public/404" unless current_user
   end
 
-  def require_merchant
-    render file: "/public/404" unless current_merchant?
-  end
-
   def require_admin
     render file: "/public/404" unless current_admin?
   end
