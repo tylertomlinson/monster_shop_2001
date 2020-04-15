@@ -23,7 +23,7 @@ RSpec.describe "Merchant employee", type: :feature do
     click_on "Delete"
 
     expect(current_path).to eq("/merchants/#{merchant.id}/items")
-    expect(page).to have_content("Item Successfully Deleted.")
-    expect(page).to_not have_content(item1.name)
+    expect(page).to have_content("#{item1.name} Successfully Deleted.")
+    expect(page).to_not have_content(item1.description)
   end
 end
