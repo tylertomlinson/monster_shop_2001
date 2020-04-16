@@ -21,10 +21,10 @@
       <%= link_to "Cart: #{cart.total_items}", "/cart" unless current_admin? %>
     </span>
     <span id="topnav-right">
+      <a><%= "Logged in as #{current_user.name}" if current_user %></a>
       <%= link_to "Login", "/login" unless current_user %>
       <%= link_to "Logout", "/logout", method: :delete if current_user %>
       <%= link_to "Register", "/register" unless current_user %>
-      <%= "Logged in as #{current_user.name}" if current_user %>
     </span>
     </nav>
     <% flash.each do |name, msg| %>
