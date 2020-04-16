@@ -8,11 +8,6 @@
 
 "Monster Shop" is a fictitious e-commerce platform where users can register to place items into a shopping cart and 'check out'. Users who work for a merchant can mark their items as 'fulfilled'; the last merchant to mark items in an order as 'fulfilled' will be able to get "shipped" by an admin. Each user role will have access to some or all CRUD functionality for application models.
 
-<p align="center">
-  <a href="https://cryptic-depths-58779.herokuapp.com/">App Hosted on Heroku</a>
- </p>
-
-
 ## Installation
 
 1. Install 
@@ -41,6 +36,14 @@ git clone git@github.com:tylertomlinson/monster_shop_2001.git
 - Push to the branch (`git push origin feature/fooBar`)
 - Create a new Pull Request
 
+
+## Schema
+
+ <p align="center">
+ <img src="https://i.imgur.com/OTr7BnY.png">
+</p>
+ 
+ 
 ### Default Accounts 
 
 | Roles         | Email         | Password  |
