@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "admin dashboard page" do
   context "as an admin" do
-    before(:each) do 
+    before(:each) do
         @user = create(:regular_user)
         @admin = create(:admin_user)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
@@ -29,56 +29,52 @@ RSpec.describe "admin dashboard page" do
     end
 
     it "can see all orders in the system with user with link to profile, order id, and when created" do
-      
+
         visit admin_path
 
         within "#order-#{@order1.id}" do
-            expect(page).to have_link("#{@order1.name}") 
+            expect(page).to have_link("#{@order1.name}")
             expect(page).to have_content(@order1.id)
             expect(page).to have_content("Date created: #{@order1.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("packaged") 
+            expect(page).to have_content("packaged")
         end
 
         within "#order-#{@order2.id}" do
-            expect(page).to have_link("#{@order2.name}") 
+            expect(page).to have_link("#{@order2.name}")
             expect(page).to have_content(@order2.id)
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("pending") 
+            expect(page).to have_content("pending")
         end
 
         within "#order-#{@order3.id}" do
-            expect(page).to have_link("#{@order3.name}") 
+            expect(page).to have_link("#{@order3.name}")
             expect(page).to have_content(@order3.id)
             expect(page).to have_content("Date created: #{@order3.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("shipped") 
+            expect(page).to have_content("shipped")
         end
 
         within "#order-#{@order4.id}" do
-            expect(page).to have_link("#{@order4.name}") 
+            expect(page).to have_link("#{@order4.name}")
             expect(page).to have_content(@order4.id)
             expect(page).to have_content("Date created: #{@order4.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("cancelled") 
+            expect(page).to have_content("cancelled")
         end
     end
 
     it "can ship an order" do
-        
+
         visit admin_path
 
         within "#order-#{@order1.id}" do
-            expect(page).to have_link("#{@order1.name}") 
+            expect(page).to have_link("#{@order1.name}")
             expect(page).to have_content(@order1.id)
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
-            expect(page).to have_content("packaged") 
-            expect(page).to have_link("ship order") 
-            expect(page).to have_link("cancel order") 
+            expect(page).to have_content("packaged")
+            expect(page).to have_link("ship order")
             click_link "ship order"
             @order1.reload
-            expect(@order1.status).to eq("shipped") 
-            expect(page).to have_no_link("cancel order")  
+            expect(@order1.status).to eq("shipped")
         end
-
     end
-    
   end
 end
