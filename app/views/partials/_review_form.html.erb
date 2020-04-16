@@ -1,0 +1,15 @@
+<center>
+  <%= form_tag path, method: method do |f| %>
+
+    <%= label_tag :title %>
+    <%= text_field_tag :title, (@review.title if @review) %>
+
+    <%= label_tag :content %>
+    <%= text_field_tag :content, (@review.content if @review) %>
+
+    <%= label_tag :rating%>
+    <%= text_field_tag :rating, (@review.rating if @review) %>
+
+    <%= submit_tag button_text %>
+  <% end %>
+</center>

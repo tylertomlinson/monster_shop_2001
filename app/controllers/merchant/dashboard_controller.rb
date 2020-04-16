@@ -1,9 +1,7 @@
 class Merchant::DashboardController < ApplicationController
-  before_action :require_merchant
+  before_action :require_merchant_employee
 
   def index
-    if current_user.merchant_id != nil
-      @merchant = Merchant.find(current_user.merchant_id)
-    end
+    @merchant = Merchant.find(current_user.merchant_id)
   end
 end

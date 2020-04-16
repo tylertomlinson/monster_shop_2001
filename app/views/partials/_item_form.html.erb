@@ -1,0 +1,20 @@
+<center>
+  <%= form_tag path, method: method do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, (@item.name if @item) %>
+
+    <%= label_tag :description %>
+    <%= text_field_tag :description, (@item.description if @item) %>
+
+    <%= label_tag :price %>
+    <%= text_field_tag :price, (@item.price if @item) %>
+
+    <%= label_tag :image %>
+    <%= text_field_tag :image, (@item.image if @item) %>
+
+    <%= label_tag :inventory %>
+    <%= text_field_tag :inventory, (@item.inventory if @item) %>
+
+    <%= submit_tag button_text %>
+  <% end %>
+</center>

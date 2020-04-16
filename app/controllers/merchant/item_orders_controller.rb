@@ -1,5 +1,5 @@
 class Merchant::ItemOrdersController < ApplicationController
-  before_action :require_merchant
+  before_action :require_merchant_employee
 
   def update
       @item_order = ItemOrder.find(params[:id])

@@ -1,4 +1,4 @@
-class Admin::MerchantsController < ApplicationController
+class Admin::MerchantsController < MerchantsController
   before_action :require_admin
 
   def index

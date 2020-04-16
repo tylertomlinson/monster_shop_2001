@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     render file: "/public/404" unless current_admin?
   end
 
-  def require_merchant
+  def require_merchant_employee
     render file: "/public/404" unless current_merchant?
   end
 end

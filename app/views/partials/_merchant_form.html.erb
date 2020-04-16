@@ -1,0 +1,20 @@
+<center>
+  <%= form_tag path, method: method do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, (@merchant.name if @merchant) %>
+
+    <%= label_tag :address %>
+    <%= text_field_tag :address, (@merchant.address if @merchant) %>
+
+    <%= label_tag :city %>
+    <%= text_field_tag :city, (@merchant.city if @merchant) %>
+
+    <%= label_tag :state %>
+    <%= text_field_tag :state, (@merchant.state if @merchant) %>
+
+    <%= label_tag :zip %>
+    <%= text_field_tag :zip, (@merchant.zip if @merchant) %>
+
+    <%= submit_tag button_text %>
+  <% end %>
+</center>
