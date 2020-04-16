@@ -1,7 +1,9 @@
 <h1>Edit Profile</h1>
 
-<%= form_tag "/profile", method: :patch do %>
-  <%= render partial: 'partials/user_form' %>
-
-  <%=submit_tag "Submit"%>
-<%end%>
+<center>
+  <%= form_tag "/profile", method: :patch do %>
+    <%= render partial: 'partials/user_address_form' %>
+    
+    <%= submit_tag "Submit" %>
+  <%end%>
+</center>
