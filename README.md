@@ -47,7 +47,7 @@ git clone git@github.com:tylertomlinson/monster_shop_2001.git
 ### Default Accounts 
 
 | Roles         | Email         | Password  |
-| ------------- |:-------------:| -----:|
+| :-------------: |:-------------:| :-----:|
 | Admin         | admin@example.com | password_admin  |
 | Merchant Employee | merchant@example.com     | password_merchant |
 | Standard User | user@example.com     | password_regular |
