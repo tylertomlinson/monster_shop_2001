@@ -17,11 +17,11 @@
       <h4>Description:</h4>
         <%= item_order.item.description %>
       <h4>Item Price:</h4>
-        <%= item_order.price %>
+        <%= number_to_currency(item_order.price)%>
       <h4>Item Qty:</h4>
         <%= item_order.quantity %>
       <h4>Item Subtotal:</h4>
-        <%= item_order.subtotal %>
+        <%= number_to_currency(item_order.subtotal)%>
     </li>
     <br>
   <% end %>
@@ -31,4 +31,4 @@
 <h3>Total Item Qty:</h3>
   <%= @order.total_quantity %>
 <h3>Order Grandtotal:</h3>
-  <%= @order.grandtotal %>
+  <%= number_to_currency(@order.grandtotal) %>
