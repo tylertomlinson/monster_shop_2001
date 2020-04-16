@@ -71,7 +71,6 @@ RSpec.describe "admin dashboard page" do
             expect(page).to have_content("Date created: #{@order2.created_at.strftime("%m/%d/%Y")}")
             expect(page).to have_content("packaged")
             expect(page).to have_link("ship order")
-            expect(page).to have_link("cancel order")
             click_link "ship order"
             @order1.reload
             expect(@order1.status).to eq("shipped")
