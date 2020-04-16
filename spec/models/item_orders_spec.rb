@@ -29,7 +29,5 @@ describe ItemOrder, type: :model do
       @item_order_1.fulfill_item_order
       expect(@item_order_1.item.inventory).to eq(10)
     end
-    
   end
-
 end
