@@ -1,42 +1,66 @@
+merchant1 = Merchant.create(name: "Magnificent Cottonmouth", address: "45689 Abernathy Ferry", city: "Lake Cameron", state: "Kentucky", zip: 11111)
+merchant2 = Merchant.create(name: "Mr Rachel Pirzad", address: "649 Gene Square", city: "South Evangeline", state: "Michigan", zip: 45732)
+merchant3 = Merchant.create(name: "Mr Moonstone Skull", address: "7131 Mitchell Views", city: "New Frank", state: "Kansas", zip: 53851)
+merchant4 = Merchant.create( name: "Sylar", address: "832 Refugio Stravenue", city: "Pricefort", state: "New Mexico", zip: 16438)
+merchant5 = Merchant.create( name: "General Kang", address: "92687 Kirlin Curve", city: "East Ariel", state: "Florida", zip: 12843, active?: false)
 
+item1 = Item.create(name: "Ergonomic Granite Knife", description: "Chuck Norris compresses his files by doing a flying round house kick to the hard drive.", price: 72, image: "https://avatarfiles.alphacoders.com/125/thumb-125254.png", inventory: 42, merchant: merchant1)
+item2 = Item.create( name: "Fantastic Linen Computer", description: "When Chuck Norris points to null,null quakes in fear.", price: 70, image: "https://avatarfiles.alphacoders.com/133/thumb-1335.jpg", inventory: 258, merchant: merchant1)
+item3 = Item.create(name: "Mediocre Concrete Wallet", description: "Chuck Norris finished World of Warcraft.", price: 61, image: "https://avatarfiles.alphacoders.com/118/thumb-118200.jpg", inventory: 263, merchant: merchant1)
+item4 = Item.create(name: "Intelligent Concrete Computer", description: "Chuck Norris doesn't pair program.", price: 15, image: "https://avatarfiles.alphacoders.com/165/thumb-165967.jpg", inventory: 305, merchant: merchant1, active?: false)
+item5 = Item.create(name: "Practical Plastic Shoes", description: "Chuck Norris breaks RSA 128-bit encrypted codes in milliseconds.", price: 56, image: "https://avatarfiles.alphacoders.com/160/thumb-160298.png", inventory: 452, merchant: merchant1, active?: false)
 
-#merchants
-bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
-dog_shop = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', city: 'Denver', state: 'CO', zip: 80210)
+item6 = Item.create(name: "Ergonomic Cotton Wallet", description: "Chuck Norris can access private methods.", price: 57, image: "https://avatarfiles.alphacoders.com/131/thumb-131127.jpg", inventory: 101, merchant: merchant2)
+item7 = Item.create(name: "Heavy Duty Steel Chair", description: "Chuck Norris doesn't use a computer because a computer does everything slower than Chuck Norris.", price: 56, image: "https://avatarfiles.alphacoders.com/152/thumb-152177.jpg", inventory: 167, merchant: merchant2)
+item8 = Item.create(name: "Practical Iron Gloves", description: "Chuck Norris knows the last digit of PI.", price: 43, image: "https://avatarfiles.alphacoders.com/120/thumb-120733.jpg", inventory: 176, merchant: merchant2)
+item9 = Item.create(name: "Incredible Cotton Bag", description: "Chuck Norris can access private methods.", price: 68, image: "https://avatarfiles.alphacoders.com/232/thumb-232271.jpg", inventory: 82, merchant: merchant2, active?: false)
+item10 = Item.create(name: "Enormous Plastic Bag", description: "Chuck Norris solved the Travelling Salesman problem in O(1) time.", price: 19, image: "https://avatarfiles.alphacoders.com/223/thumb-223913.jpg", inventory: 478, merchant: merchant2, active?: false)
 
-#bike_shop items
-tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
+item11 = Item.create(name: "Incredible Silk Wallet", description: "Chuck Norris doesn't have performance bottlenecks. He just makes the universe wait its turn.", price: 16, image: "https://avatarfiles.alphacoders.com/206/thumb-206020.jpg", inventory: 259, merchant: merchant3)
+item12 = Item.create(name: "Awesome Linen Lamp", description: "Chuck Norris does not use revision control software. None of his code has ever needed revision.", price: 70, image: "https://avatarfiles.alphacoders.com/199/thumb-199362.jpg", inventory: 16, merchant: merchant3)
+item13 = Item.create(name: "Ergonomic Granite Table", description: "The only pattern Chuck Norris knows is God Object.", price: 86, image: "https://avatarfiles.alphacoders.com/193/thumb-193772.jpg", inventory: 120, merchant: merchant3)
+item14 = Item.create(name: "Ergonomic Leather Shirt", description: "Chuck Norris can binary search unsorted data.", price: 25, image: "https://avatarfiles.alphacoders.com/177/thumb-177871.jpg", inventory: 219, merchant: merchant3, active?: false)
+item15 = Item.create(name: "Heavy Duty Silk Watch", description: "Chuck Norris breaks RSA 128-bit encrypted codes in milliseconds.", price: 82, image: "https://avatarfiles.alphacoders.com/165/thumb-165968.jpg", inventory: 299, merchant: merchant3, active?: false)
 
-bike_pump = bike_shop.items.create(name: "Tire Pump", description: "A high-performance floor pump that makes no compromise in design, material, or function.", price: 50, image: "https://s7d5.scene7.com/is/image/Specialized/?layer=0&wid=1920&hei=640&fmt=jpg&src=is{Specialized/pdp-product-bg-light?wid=1920&hei=640}&layer=1&src=is{Specialized/472E-9080_PUMP_AIR-TOOL-PRO_POL_HERO?wid=920&hei=600&$hybris-pdp-hero$}", inventory: 10)
+item16 = Item.create(name: "Sleek Copper Coat", description: "Chuck Norris doesn't get compiler errors,the language changes itself to accommodate Chuck Norris.", price: 36, image: "https://avatarfiles.alphacoders.com/657/thumb-65717.jpg", inventory: 149, merchant: merchant4)
+item17 = Item.create(name: "Rustic Concrete Clock", description: "Chuck Norris can binary search unsorted data.", price: 86, image: "https://avatarfiles.alphacoders.com/391/thumb-39145.jpg", inventory: 363, merchant: merchant4)
+item18 = Item.create(name: "Fantastic Marble Lamp", description: "Chuck Norris doesn't program with a keyboard. He stares the computer down until it does what he wants.", price: 21, image: "https://avatarfiles.alphacoders.com/386/thumb-38600.jpg", inventory: 20, merchant: merchant4)
+item19 = Item.create(name: "Aerodynamic Plastic Keyboard", description: "Chuck Norris finished World of Warcraft.", price: 48, image: "https://avatarfiles.alphacoders.com/362/thumb-36221.jpg", inventory: 318, merchant: merchant4, active?: false)
+item20 = Item.create(name: "Durable Linen Shirt", description: "Chuck Norris finished World of Warcraft.", price: 5, image: "https://avatarfiles.alphacoders.com/362/thumb-36220.jpg", inventory: 231, merchant: merchant4, active?: false)
 
-horn = bike_shop.items.create(name: "Bike Horn", description: " Enhance safety with this loud and beautiful bicycle bell", price: 100, image: "https://www.meijer.com/content/dam/meijer/product/0003/86/7558/65/0003867558650_0_A1C1_1200.png", inventory: 20)
+item21 = Item.create(name: "Intelligent Paper Knife", description: "Chuck Norris can spawn threads that complete before they are started.", price: 38, image: "https://avatarfiles.alphacoders.com/170/thumb-17089.jpg", inventory: 171, merchant: merchant5)
+item22 = Item.create(name: "Enormous Aluminum Computer", description: "When Chuck Norris' code fails to compile the compiler apologises.", price: 19, image: "https://avatarfiles.alphacoders.com/252/thumb-2529.jpg", inventory: 35,merchant: merchant5)
+item23 = Item.create(name: "Intelligent Granite Keyboard", description: "Chuck Norris's first program was kill -9.", price: 26, image: "https://picfiles.alphacoders.com/264/thumb-264349.png", inventory: 297, merchant: merchant5)
+item24 = Item.create(name: "Incredible Steel Wallet", description: "Chuck Norris has root access to your system.", price: 5, image: "https://picfiles.alphacoders.com/160/thumb-160735.jpg", inventory: 172, merchant: merchant5, active?: false)
+item25 = Item.create(name: "Incredible Cotton Bench", description: "Chuck Norris finished World of Warcraft.", price: 92, image: "https://picfiles.alphacoders.com/719/thumb-719.jpg", inventory: 72, merchant: merchant5, active?: false)
 
+regular_user = User.create(name: "Regular User", address: "1234 Regular St", city: "Regular City", state: "Regular State", zip: "00000", email: "user@example.com", password: "password_regular")
+merchant_employee = User.create(name: "Merchant Employee", address: "1234 Merchant St", city: "Merchant City", state: "Merchant State", zip: "00001", email: "merchant@example.com", password: "password_merchant", role: 1, merchant: merchant1)
+admin_user = User.create(name: "Admin User", address: "1234 Admin St", city: "Admin City", state: "Admin State", zip: "00002", email: "admin@example.com", password: "password_admin", role: 2)
 
-#dog_shop items
-pull_toy = dog_shop.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "https://cdn.shopify.com/s/files/1/1114/2810/products/Plan-Toys-Dancing-Alligator-Pull-Along-Toy_1080x.jpg?v=1539482341", inventory: 32)
-dog_bone = dog_shop.items.create(name: "Dog Bone", description: "They'll love it!", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
+user2 = User.create(name: "Gale Boetticher", address: "406 Balistreri Drive", city: "North Edisonfurt", state: "California", zip: "11111", email: "dorris@torphy.biz", password: "fdjaopfjdwa")
+user3 = User.create( name: "Ted Beneke", address: "45770 Ignacio Walk", city: "Botsfordberg", state: "Tennessee", zip: "11111", email: "felicita_osinski@schuster.biz", password: "fdafdasf")
+user4 = User.create(name: "Declan", address: "84836 Ryan Club", city: "Kuhlmanberg", state: "Ohio", zip: "11111", email: "byron.koelpin@shields.co", password: "5456hgfawee")
 
-dog_bone = dog_shop.items.create(name: "Dog Bone", description: "Perfect for dogs that love to stretch and sprawl out in their sleep", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
+order1 = Order.create(name: "Gilbert Miller", address: "6735 Elmer Glens", city: "Rippintown", state: "North Carolina", zip: 46812, user: regular_user)
+order2 = Order.create(name: "Dr. Chester Stamm", address: "7877 Divina Fork", city: "O'Connerfort", state: "Ohio", zip: 23849, user: regular_user, status: "packaged")
+order3 = Order.create(name: "Sally Rodriguez", address: "55175 Kemmer Station", city: "Grimesport", state: "Wisconsin", zip: 90347, user: user2)
+order4 = Order.create(name: "Wes Feest", address: "6355 Zoe Way", city: "Port Garretshire", state: "Michigan", zip: 14826, user: user3)
+order5 = Order.create(name: "Elbert Harber", address: "58083 Parisian Mountains", city: "Vernitashire", state: "Pennsylvania", zip: 14375, user: user4)
 
-dog_bed = dog_shop.items.create(name: "Dog Bed", description: "They'll love it!", price: 100, image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto,t_ProductDetail-large/2533855-center-1", active?:false, inventory: 15)
+item_order1_1 = ItemOrder.create(price: item1.price, quantity: 2, item: item1, order: order1)
+item_order1_2 = ItemOrder.create(price: item2.price, quantity: 1, item: item2, order: order1)
+item_order2_1 = ItemOrder.create(price: item3.price, quantity: 2, item: item3, order: order2, status: "fulfilled")
+item_order2_2 = ItemOrder.create(price: item4.price, quantity: 3, item: item4, order: order2, status: "fulfilled")
+item_order3_1 = ItemOrder.create(price: item5.price, quantity: 2, item: item5, order: order3, status: "fulfilled")
+item_order3_2 = ItemOrder.create(price: item6.price, quantity: 2, item: item6, order: order3)
+item_order4_1 = ItemOrder.create(price: item7.price, quantity: 1, item: item7, order: order4)
+item_order4_2 = ItemOrder.create(price: item8.price, quantity: 3, item: item8, order: order4, status: "fulfilled")
+item_order5_1 = ItemOrder.create(price: item9.price, quantity: 2, item: item9, order: order5)
+item_order5_2 = ItemOrder.create(price: item10.price, quantity: 3, item: item10, order: order5)
 
-user_1 = User.create!(name: "Regular User", address: "1234 Regular St", city: "Regular City", state: "Regular State", zip: "00000", email: "user123345@example.com", password: "password_regular1", role: 0)
-
-user_2 = User.create!(name: "Regular User", address: "12345 Regular St", city: "Regular City", state: "Regular State", zip: "00000", email: "user2323432324@example.com", password: "password_regular2", role: 0)
-
-order_1 = user_1.orders.create(name: 'Iron Man', address: '10880 Malibu Point', city: 'Malibu', state: 'CA', zip: 90265)
-
-order_1.item_orders.create!(item: tire, price: tire.price, quantity: 5)
-order_1.item_orders.create!(item: bike_pump, price: bike_pump.price, quantity: 1)
-order_1.item_orders.create!(item: dog_bone, price: pull_toy.price, quantity: 5)
-
-order_2 = user_2.orders.create(name: 'Iron Man', address: '10880 Malibu Point', city: 'Malibu', state: 'CA', zip: 90265)
-
-order_2.item_orders.create!(item: dog_bed, price: dog_bed.price, quantity: 5)
-order_2.item_orders.create!(item: bike_pump, price: bike_pump.price, quantity: 1)
-order_2.item_orders.create!(item: horn, price: horn.price, quantity: 5)
-
-#users
-User.create(name: "Regular User", address: "1234 Regular St", city: "Regular City", state: "Regular State", zip: "00000", email: "user@example.com", password: "password_regular", role: 0)
-User.create(name: "Merchant Employee", address: "1234 Merchant St", city: "Merchant City", state: "Merchant State", zip: "00001", email: "merchant@example.com", password: "password_merchant", merchant_id: dog_shop.id, role: 1)
-User.create(name: "Admin User", address: "1234 Admin St", city: "Admin City", state: "Admin State", zip: "00002", email: "admin@example.com", password: "password_admin", role: 2)
+review1 = Review.create(title: "Review1", content: "This is Review 1", rating: 1, item: item1)
+review2 = Review.create(title: "Review2", content: "This is Review 2", rating: 2, item: item2)
+review3 = Review.create(title: "Review3", content: "This is Review 3", rating: 3, item: item3)
+review4 = Review.create(title: "Review4", content: "This is Review 4", rating: 4, item: item4)
+review5 = Review.create(title: "Review5", content: "This is Review 5", rating: 5, item: item5)
