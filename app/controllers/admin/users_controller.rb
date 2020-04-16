@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < UsersController
   before_action :require_admin
 
   def index
