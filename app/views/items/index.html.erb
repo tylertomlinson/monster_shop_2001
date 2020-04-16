@@ -4,27 +4,23 @@
 <% else %>
 <h1>All Items</h1>
 <% end %>
+
+  <div class="row">
+    <div class="column">
+    <h3>Most Popular Items</h3>
+    <% @items.most_popular(5).each do |item| %>
+      <li><%= link_to item.name %>: <%= item.quantity_ordered %> purchased</li>
+    <% end %>
+  </div>
+  <div class="column">
+    <h3>Least Popular Items</h3>
+    <% @items.most_popular(5).each do |item| %>
+      <li><%= link_to item.name %>: <%= item.quantity_ordered%> purchased</li>
+    <% end %>
+  </div>
+</div>
+
 <section class="grid-container">
-  <aside class="grid-item">
-    <div id='most-popular-items'>
-      <h2>Most Popular Items</h2>
-      <ul>
-        <% @items.most_popular(5).each do |item| %>
-        <h4><%=link_to item.name %> </h4>
-        <li>Quantity Ordered: <%= item.quantity_ordered %></li>
-        <% end %>
-      </ul>
-    </div>
-    <div id='least-popular-items'>
-      <h2>Least Popular Items</h2>
-      <ul>
-        <% @items.least_popular(5).each do |item| %>
-        <h4><%=link_to item.name %> </h4>
-        <li>Quantity Ordered: <%= item.quantity_ordered %></li>
-        <% end %>
-      </ul>
-    </div>
-  </aside>
   <% @items.each do |item| %>
   <section class = "grid-item" id= 'item-<%=item.id%>'>
     <h2> <%=link_to item.name, "/items/#{item.id}" %> </h2>
@@ -44,4 +40,3 @@
     <% end %>
   </section>
   <% end %>
-</section>
