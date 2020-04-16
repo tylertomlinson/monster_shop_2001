@@ -1,4 +1,4 @@
-class Merchant <ApplicationRecord
+class Merchant < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :item_orders, through: :items
   has_many :users
@@ -32,9 +32,9 @@ class Merchant <ApplicationRecord
       item.toggle(:active?)
       item.save
     end
+  end
 
-    def pending_orders
-      orders.where(status: "pending")
-    end
+  def pending_orders
+    orders.where(status: "pending")
   end
 end
