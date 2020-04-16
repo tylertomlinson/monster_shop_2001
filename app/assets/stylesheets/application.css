@@ -190,12 +190,12 @@ tr:nth-child(even) {
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  width: 30%;
+  width: 40%;
   padding-bottom: 20px;
 }
 
 .row {
-  padding-left: 485px;
+  padding-left: 400px;
 }
 
 /* Clear floats after the columns */

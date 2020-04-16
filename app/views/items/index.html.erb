@@ -12,6 +12,7 @@
     <% @items.most_popular(5).each do |item| %>
       <li><%= link_to item.name %>: <%= item.quantity_ordered %> purchased</li>
     <% end %>
+      </div>
   </div>
   <div class="column">
     <div id='least-popular-items'>
@@ -19,6 +20,7 @@
     <% @items.most_popular(5).each do |item| %>
       <li><%= link_to item.name %>: <%= item.quantity_ordered%> purchased</li>
     <% end %>
+      </div>
   </div>
 </div>
 
