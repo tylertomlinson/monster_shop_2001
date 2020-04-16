@@ -79,9 +79,9 @@ describe Merchant, type: :model do
       order_1 = user.orders.create!(name: 'Meg', address: '123 Stang Ave', city: 'Hershey', state: 'PA', zip: 17033)
       order_2 = user.orders.create!(name: 'Brian', address: '123 Brian Ave', city: 'Denver', state: 'CO', zip: 17033)
       order_3 = user.orders.create!(name: 'Dao', address: '123 Mike Ave', city: 'Denver', state: 'CO', zip: 17033)
-      order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2)
-      order_2.item_orders.create!(item: chain, price: chain.price, quantity: 2)
-      order_3.item_orders.create!(item: @tire, price: @tire.price, quantity: 2)
+      order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2, status: "unfulfilled")
+      order_2.item_orders.create!(item: chain, price: chain.price, quantity: 2, status: "unfulfilled")
+      order_3.item_orders.create!(item: @tire, price: @tire.price, quantity: 2, status: "unfulfilled")
 
       expect(@meg.pending_orders).to eq([order_1, order_2, order_3])
     end
