@@ -30,7 +30,8 @@ ul{
   text-align: center;
 }
 img{
-  width: 50%;
+  height: 150px;
+  width: 150px;
 }
 
 .cart-image{
@@ -84,6 +85,8 @@ section[id*='review'] {
    overflow: hidden;
    background-color: #002244;
  }
+
+
 
  #topnav-left a {
    float: left;
@@ -178,4 +181,26 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #F0F8FF;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 40%;
+  padding-bottom: 20px;
+}
+
+.row {
+  padding-left: 400px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

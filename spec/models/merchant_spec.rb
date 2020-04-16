@@ -83,7 +83,9 @@ describe Merchant, type: :model do
       order_2.item_orders.create!(item: chain, price: chain.price, quantity: 2, status: "unfulfilled")
       order_3.item_orders.create!(item: @tire, price: @tire.price, quantity: 2, status: "unfulfilled")
 
-      expect(@meg.pending_orders).to eq([order_1, order_2, order_3])
+      expect(@meg.pending_orders).to include(order_1)
+      expect(@meg.pending_orders).to include(order_2)
+      expect(@meg.pending_orders).to include(order_3)
     end
   end
 end

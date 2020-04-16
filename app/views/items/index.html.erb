@@ -4,27 +4,27 @@
 <% else %>
 <h1>All Items</h1>
 <% end %>
-<section class="grid-container">
-  <aside class="grid-item">
-    <div id='most-popular-items'>
-      <h2>Most Popular Items</h2>
-      <ul>
-        <% @items.most_popular(5).each do |item| %>
-        <h4><%=link_to item.name %> </h4>
-        <li>Quantity Ordered: <%= item.quantity_ordered %></li>
-        <% end %>
-      </ul>
-    </div>
+
+  <div class="row">
+    <div class="column">
+      <div id='most-popular-items'>
+    <h3>Most Popular Items</h3>
+    <% @items.most_popular(5).each do |item| %>
+      <li><%= link_to item.name %>: <%= item.quantity_ordered %> purchased</li>
+    <% end %>
+      </div>
+  </div>
+  <div class="column">
     <div id='least-popular-items'>
-      <h2>Least Popular Items</h2>
-      <ul>
-        <% @items.least_popular(5).each do |item| %>
-        <h4><%=link_to item.name %> </h4>
-        <li>Quantity Ordered: <%= item.quantity_ordered %></li>
-        <% end %>
-      </ul>
-    </div>
-  </aside>
+    <h3>Least Popular Items</h3>
+    <% @items.most_popular(5).each do |item| %>
+      <li><%= link_to item.name %>: <%= item.quantity_ordered%> purchased</li>
+    <% end %>
+      </div>
+  </div>
+</div>
+
+<section class="grid-container">
   <% @items.each do |item| %>
   <section class = "grid-item" id= 'item-<%=item.id%>'>
     <h2> <%=link_to item.name, "/items/#{item.id}" %> </h2>
@@ -33,15 +33,17 @@
     <p> <%= item.description if current_merchant? || !@merchant %> </p>
     <p>Price: <%=number_to_currency(item.price) %> </p>
     <p>Inventory: <%= item.inventory %> </p>
-    <%= link_to 'Edit Item', "/merchant/items/#{item.id}/edit", method: :get if current_merchant? || !@merchant%>
-    <%= link_to "Delete", "/merchant/items/#{item.id}", method: :delete if current_merchant? || !@merchant %>
+
+  <% if current_merchant? || current_admin? %>
+    <%= link_to 'Edit Item', "/merchant/items/#{item.id}/edit", method: :get %>
+    <%= link_to "Delete", "/merchant/items/#{item.id}", method: :delete  %>
     <% if item.active? %>
       <p>Active</p>
-      <%= link_to 'Deactivate', "/merchant/items/#{item.id}?status_update=deactivate", method: :patch if current_merchant? || !@merchant %>
+      <%= link_to 'Deactivate', "/merchant/items/#{item.id}?status_update=deactivate", method: :patch  %>
       <% else %>
       <p>Inactive</p>
-      <%= link_to 'Activate', "/merchant/items/#{item.id}?status_update=activate", method: :patch if current_merchant? || !@merchant %>
+      <%= link_to 'Activate', "/merchant/items/#{item.id}?status_update=activate", method: :patch  %>
+    <% end %>
     <% end %>
   </section>
   <% end %>
-</section>

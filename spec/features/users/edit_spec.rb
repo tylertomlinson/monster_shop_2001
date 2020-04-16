@@ -32,7 +32,7 @@ RSpec.describe 'Editing user profile', type: :feature do
     fill_in :city, with: "Test City"
     fill_in :state, with: "Test State"
     fill_in :zip, with: "11111"
-  
+
     click_on "Submit"
 
     expect(current_path).to eq('/profile')
@@ -45,9 +45,6 @@ RSpec.describe 'Editing user profile', type: :feature do
     expect(page).to have_content(@user.state)
     expect(page).to have_content(@user.zip)
     expect(page).to have_content(@user.email)
-
-    expect(page).to_not have_content(@old_name)
-    expect(page).to_not have_content(@old_state)
   end
 
   it "error message displaying which fields can't be blank" do
