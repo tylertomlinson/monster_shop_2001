@@ -77,6 +77,5 @@ RSpec.describe 'review edit and update', type: :feature do
         expect(page).to have_content(review_1.rating)
       end
     end
-
   end
 end
