@@ -1,13 +1,12 @@
-
-<h1>Order:</h1>
-  <%= @order.id %>
+<h2>Order: <%= @order.id %> </h2>
 <h4>Status: </h4>
   <%= @order.status %>
 <h4>Order for:</h4>
   <%= @order.name %></p>
 <h4>Date Created:</h4>
-  <%= @order.created_at %></p>
-<h4>Date Updated:</h4> <%= @order.updated_at %><br>
+  <%= @order.created_at.strftime("%m/%d/%Y") %>
+<h4>Date Updated:</h4>
+<%= @order.updated_at.strftime("%m/%d/%Y") %><br>
 
 <h1>Items:</h1>
 <ol>
@@ -33,16 +32,3 @@
   <%= @order.total_quantity %>
 <h3>Order Grandtotal:</h3>
   <%= @order.grandtotal %>
-
-
-When I visit a user's profile
-And I click on a link for order's show page
-My URL route is now something like "/admin/users/5/orders/15"
-I see all information about the order, including the following information:
-- the ID of the order
-- the date the order was made
-- the date the order was last updated
-- the current status of the order
-- each item the user ordered, including name, description, thumbnail, quantity, price and subtotal
-- the total quantity of items in the whole order
-- the grand total of all items for that order
