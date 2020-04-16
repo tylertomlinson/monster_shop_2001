@@ -72,7 +72,6 @@ describe Merchant, type: :model do
       end
     end
 
-
     it 'pending_orders' do
       chain = @meg.items.create(name: "Chain", description: "It'll never break!", price: 40, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 22)
       user = create(:regular_user)

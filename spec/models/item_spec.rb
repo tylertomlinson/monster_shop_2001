@@ -17,7 +17,6 @@ describe Item, type: :model do
     it {should have_many(:orders).through(:item_orders)}
   end
 
-
   describe "instance methods" do
     before(:each) do
       @user1 = create(:regular_user)
@@ -145,5 +144,5 @@ describe Item, type: :model do
 
       expect(@chain.active?).to eq(true)
     end
- end
+  end
 end
