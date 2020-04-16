@@ -1,0 +1,48 @@
+
+<h1>Order:</h1>
+  <%= @order.id %>
+<h4>Status: </h4>
+  <%= @order.status %>
+<h4>Order for:</h4>
+  <%= @order.name %></p>
+<h4>Date Created:</h4>
+  <%= @order.created_at %></p>
+<h4>Date Updated:</h4> <%= @order.updated_at %><br>
+
+<h1>Items:</h1>
+<ol>
+  <% @order.item_orders.each do |item_order| %>
+    <li>
+      <h3><%= item_order.item.name %></h3>
+      <%= image_tag item_order.item.image %>
+      <h4>Description:</h4>
+        <%= item_order.item.description %>
+      <h4>Item Price:</h4>
+        <%= item_order.price %>
+      <h4>Item Qty:</h4>
+        <%= item_order.quantity %>
+      <h4>Item Subtotal:</h4>
+        <%= item_order.subtotal %>
+    </li>
+    <br>
+  <% end %>
+</ol>
+  <br>
+
+<h3>Total Item Qty:</h3>
+  <%= @order.total_quantity %>
+<h3>Order Grandtotal:</h3>
+  <%= @order.grandtotal %>
+
+
+When I visit a user's profile
+And I click on a link for order's show page
+My URL route is now something like "/admin/users/5/orders/15"
+I see all information about the order, including the following information:
+- the ID of the order
+- the date the order was made
+- the date the order was last updated
+- the current status of the order
+- each item the user ordered, including name, description, thumbnail, quantity, price and subtotal
+- the total quantity of items in the whole order
+- the grand total of all items for that order
