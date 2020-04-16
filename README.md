@@ -36,9 +36,9 @@ git clone git@github.com:tylertomlinson/monster_shop_2001.git
 
 ## Contributing
 - Fork repo (https://github.com/tylertomlinson/monster_shop_2001)
-- Create your feature branch (git checkout -b feature/fooBar)
-- Commit your changes (git commit -m 'Add some fooBar')
-- Push to the branch (git push origin feature/fooBar)
+- Create your feature branch (`git checkout -b feature/fooBar`)
+- Commit your changes (`git commit -m 'Add some fooBar'`)
+- Push to the branch (`git push origin feature/fooBar`)
 - Create a new Pull Request
 
 ### Default Accounts 
