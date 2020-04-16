@@ -1,29 +1,13 @@
 <h1>New Registration Form</h1>
 
-<%= form_tag ("/register") do %>
-    <%= label_tag :name %><br/>
-    <%= text_field_tag :name, @user.nil? ? ' ' : @user.name %><br/>
+<%= form_tag "/register", method: :post do %>
+  <%= render partial: 'partials/user_form' %>
 
-    <%= label_tag :address %><br/>
-    <%= text_field_tag :address, @user.nil? ? ' ' : @user.address %><br/>
+  <%= label_tag :password %><br/>
+  <%= password_field_tag :password %><br/>
 
-    <%= label_tag :city %><br/>
-    <%= text_field_tag :city, @user.nil? ? ' ' : @user.city %><br/>
+  <%= label_tag :confirm_password %><br/>
+  <%= password_field_tag :password_confirmation %><br/>
 
-    <%= label_tag :state %><br/>
-    <%= text_field_tag :state, @user.nil? ? ' ' : @user.state %><br/>
-
-    <%= label_tag :zip %><br/>
-    <%= text_field_tag :zip, @user.nil? ? ' ' : @user.zip %><br/>
-
-    <%= label_tag :email %><br/>
-    <%= text_field_tag :email %><br/>
-
-    <%= label_tag :password %><br/>
-    <%= password_field_tag :password %><br/>
-
-    <%= label_tag :confirm_password %><br/>
-    <%= password_field_tag :password_confirmation %><br/>
-
-    <%=submit_tag "Submit"%>
+  <%=submit_tag "Submit"%>
 <%end%>
