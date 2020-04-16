@@ -7,10 +7,6 @@
   <%= "#{@user.city}, #{@user.state} #{@user.zip}" %>
   <h3>Email</h3>
   <%= @user.email  %><br><br>
-  <% if current_admin? %>
-  <%= link_to 'Orders', "/admin/users/#{@user.id}/orders" %>
-  <% else %>
   <%= link_to 'Edit Profile', '/profile/edit' %>
   <%= link_to 'Edit Password', '/profile/edit_password' %>
-  <% end %>
 </div>
