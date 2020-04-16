@@ -76,8 +76,6 @@ RSpec.describe "admin dashboard page" do
             expect(@order1.status).to eq("shipped")
             expect(page).to have_no_link("cancel order")
         end
-
     end
-
   end
 end
