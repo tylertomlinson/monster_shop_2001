@@ -1,0 +1,34 @@
+<h2>Order: <%= @order.id %> </h2>
+<h4>Status: </h4>
+  <%= @order.status %>
+<h4>Order for:</h4>
+  <%= @order.name %></p>
+<h4>Date Created:</h4>
+  <%= @order.created_at.strftime("%m/%d/%Y") %>
+<h4>Date Updated:</h4>
+<%= @order.updated_at.strftime("%m/%d/%Y") %><br>
+
+<h1>Items:</h1>
+<ol>
+  <% @order.item_orders.each do |item_order| %>
+    <li>
+      <h3><%= item_order.item.name %></h3>
+      <%= image_tag item_order.item.image %>
+      <h4>Description:</h4>
+        <%= item_order.item.description %>
+      <h4>Item Price:</h4>
+        <%= number_to_currency(item_order.price)%>
+      <h4>Item Qty:</h4>
+        <%= item_order.quantity %>
+      <h4>Item Subtotal:</h4>
+        <%= number_to_currency(item_order.subtotal)%>
+    </li>
+    <br>
+  <% end %>
+</ol>
+  <br>
+
+<h3>Total Item Qty:</h3>
+  <%= @order.total_quantity %>
+<h3>Order Grandtotal:</h3>
+  <%= number_to_currency(@order.grandtotal) %>

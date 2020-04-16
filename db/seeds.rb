@@ -1,9 +1,4 @@
 
-# Item.destroy_all
-# ItemOrder.destroy_all
-# Order.destroy_all
-# Merchant.destroy_all
-# User.destroy_all
 
 #merchants
 bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
@@ -24,7 +19,6 @@ dog_bone = dog_shop.items.create(name: "Dog Bone", description: "They'll love it
 dog_bone = dog_shop.items.create(name: "Dog Bone", description: "Perfect for dogs that love to stretch and sprawl out in their sleep", price: 21, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
 
 dog_bed = dog_shop.items.create(name: "Dog Bed", description: "They'll love it!", price: 100, image: "https://assets.petco.com/petco/image/upload/f_auto,q_auto,t_ProductDetail-large/2533855-center-1", active?:false, inventory: 15)
-
 
 user_1 = User.create!(name: "Regular User", address: "1234 Regular St", city: "Regular City", state: "Regular State", zip: "00000", email: "user123345@example.com", password: "password_regular1", role: 0)
 

@@ -5,4 +5,5 @@
 <%= "#{@user.address}" %> <br>
 <%= "#{@user.city}, #{@user.state} #{@user.zip}" %>
 <h4>Email:</h4>
-<%=@user.email%>
+<%=@user.email%> <br>
+<%= link_to 'Orders', "/admin/users/#{@user.id}/orders" %>
