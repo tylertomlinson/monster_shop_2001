@@ -32,9 +32,9 @@ class Merchant < ApplicationRecord
       item.toggle(:active?)
       item.save
     end
+  end
 
-    def pending_orders
-      orders.where(status: "pending")
-    end
+  def pending_orders
+    orders.where(status: "pending")
   end
 end
