@@ -72,17 +72,17 @@ rspec
 | Merchant Employee | merchant@example.com | password_merchant |
 |   Standard User   |   user@example.com   | password_regular  |
 
-#### Creating account
+### Creating account
  <p align="center">
  <img src="https://media.giphy.com/media/XdP30SZ43DHTd2nA7K/giphy.gif">
 </p>
 
-#### Merchants
+### Merchants
 <p align="center">
  <img src="https://imgur.com/nDt3Jzk.png">
 </p>
 
-#### Items
+### Items
 <p align="center">
  <img src="https://i.imgur.com/s17SFKX.png">
 </p>
@@ -92,12 +92,12 @@ rspec
  <img src="https://imgur.com/csO2TwW.png">
 </p>
 
-#### Checkout 
+### Checkout 
 <p align="center">
  <img src="https://imgur.com/C1Sxkb8.png">
 </p>
 
-#### Orders 
+### Orders 
 <p align="center">
  <img src="https://imgur.com/sonvTDW.png">
 </p>
