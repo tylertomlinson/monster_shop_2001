@@ -66,7 +66,7 @@ rspec
 </p>
 
 ---
-## Default users
+## Default accounts
 |       Roles       |        Email         |     Password      |
 | :---------------: | :------------------: | :---------------: |
 |       Admin       |  admin@example.com   |  password_admin   |
