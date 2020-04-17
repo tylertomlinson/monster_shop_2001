@@ -10,7 +10,7 @@
       <div id='most-popular-items'>
     <h3>Most Popular Items</h3>
     <% @items.most_popular(5).each do |item| %>
-      <li><%= link_to item.name %>: <%= item.quantity_ordered %> purchased</li>
+      <li><%= link_to item.name, "/items/#{item.id}" %>: <%= item.quantity_ordered %> purchased</li>
     <% end %>
       </div>
   </div>
@@ -18,7 +18,7 @@
     <div id='least-popular-items'>
     <h3>Least Popular Items</h3>
     <% @items.most_popular(5).each do |item| %>
-      <li><%= link_to item.name %>: <%= item.quantity_ordered%> purchased</li>
+      <li><%= link_to item.name, "/items/#{item.id}"%>: <%= item.quantity_ordered%> purchased</li>
     <% end %>
       </div>
   </div>
