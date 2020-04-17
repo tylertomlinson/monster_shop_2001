@@ -50,7 +50,7 @@ bundle install
 ```javascript
 rake db:{create,migrate,seed}
 ```
-### Fire up local server: (http://localhost:3000)
+#### Fire up local server: (http://localhost:3000)
 ```javascript
 rails s
 ```
