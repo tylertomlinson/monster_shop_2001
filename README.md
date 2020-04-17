@@ -1,11 +1,15 @@
 <p align="center">
-  <img width="500" height="200" src="https://media-exp1.licdn.com/dms/image/C4D1BAQHZ3m-yGm8cvA/company-background_10000/0?e=2159024400&v=beta&t=4R94SSaU7ug1AXLuYJzmSsqKUUdseWG-BlfpnZiwnKI">
+  <img width="500" height="300" src="https://media-exp1.licdn.com/dms/image/C4D1BAQHZ3m-yGm8cvA/company-background_10000/0?e=2159024400&v=beta&t=4R94SSaU7ug1AXLuYJzmSsqKUUdseWG-BlfpnZiwnKI">
 </p>
 
 <p align="center">
   <a href="https://codeclimate.com/github/tylertomlinson/monster_shop_2001/maintainability"><img src="https://api.codeclimate.com/v1/badges/8202f4f70c28f421c71d/maintainability" /></a>
 </p>
 
+<p align="center">
+  <a href="https://cryptic-depths-58779.herokuapp.com/">Monster Shop App</a>
+ </p>
+ 
 # Table of Contents
 <details>
 <summary>Click to expand</summary>
