@@ -6,7 +6,7 @@
   <a href="https://codeclimate.com/github/tylertomlinson/monster_shop_2001/maintainability"><img src="https://api.codeclimate.com/v1/badges/8202f4f70c28f421c71d/maintainability" /></a>
 </p>
 
-## Table of Contents
+# Table of Contents
 <details>
 <summary>Click to expand</summary>
   
@@ -24,49 +24,49 @@
 </details>
 
 
-## About
+# About
 "Monster Shop" is a fictitious e-commerce platform where users can register to place items into a shopping cart and 'check out'. Users who work for a merchant can mark their items as 'fulfilled'; the last merchant to mark items in an order as 'fulfilled' will be able to get "shipped" by an admin. Each user role will have access to some or all CRUD functionality for application models.
 
-## Getting Started
-### Prerequisites
+# Getting Started
+## Prerequisites
 ```javascript
 brew install ruby -2.5.3
 gem install rails -5.1.7
 ```
-### Installing
-Clone repository:
+## Installing
+#### Clone repository:
 ```javascript
 git clone git@github.com:tylertomlinson/monster_shop_2001.git
 ```
-Navigate into directory:
+#### Navigate into directory:
 ```javascript
 cd monster_shop_2001
 ```
-Install gems:
+#### Install gems:
 ```javascript
 bundle install
 ```
-Configure databases:
+#### Configure databases:
 ```javascript
 rake db:{create,migrate,seed}
 ```
-Fire up local server: (http://localhost:3000)
+### Fire up local server: (http://localhost:3000)
 ```javascript
 rails s
 ```
-Run test suite:
+#### Run test suite:
 ```javascript
 rspec
 ```
 
-## How it works
+# How it works
 ### Schema
  <p align="center">
  <img src="https://i.imgur.com/OTr7BnY.png">
 </p>
 
 ---
-### Default users
+## Default users
 |       Roles       |        Email         |     Password      |
 | :---------------: | :------------------: | :---------------: |
 |       Admin       |  admin@example.com   |  password_admin   |
@@ -74,42 +74,42 @@ rspec
 |   Standard User   |   user@example.com   | password_regular  |
 
 ---
-### Creating account
+## Creating account
  <p align="center">
  <img src="https://media.giphy.com/media/XdP30SZ43DHTd2nA7K/giphy.gif">
 </p>
 
 ---
-### Merchants
+## Merchants
 <p align="center">
  <img src="https://imgur.com/nDt3Jzk.png">
 </p>
 
 ---
-### Items
+## Items
 <p align="center">
  <img src="https://i.imgur.com/s17SFKX.png">
 </p>
 
 ---
-### Cart
+## Cart
 <p align="center">
  <img src="https://imgur.com/csO2TwW.png">
 </p>
 
 ---
-### Checkout 
+## Checkout 
 <p align="center">
  <img src="https://imgur.com/C1Sxkb8.png">
 </p>
 
 ---
-### Orders 
+## Orders 
 <p align="center">
  <img src="https://imgur.com/sonvTDW.png">
 </p>
 
-## Authors 
+# Authors 
 <p>
   <a href="https://github.com/tylertomlinson">Tyler Tomlinson</a>
  </p>
@@ -124,7 +124,7 @@ rspec
  </p>
 
 
- ## Contributing
+ # Contributing
 - Fork repo (https://github.com/tylertomlinson/monster_shop_2001)
 - Create your feature branch (`git checkout -b feature/fooBar`)
 - Commit your changes (`git commit -m 'Add some fooBar'`)
