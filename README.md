@@ -65,6 +65,7 @@ rspec
  <img src="https://i.imgur.com/OTr7BnY.png">
 </p>
 
+---
 ### Default users
 |       Roles       |        Email         |     Password      |
 | :---------------: | :------------------: | :---------------: |
@@ -72,31 +73,37 @@ rspec
 | Merchant Employee | merchant@example.com | password_merchant |
 |   Standard User   |   user@example.com   | password_regular  |
 
+---
 ### Creating account
  <p align="center">
  <img src="https://media.giphy.com/media/XdP30SZ43DHTd2nA7K/giphy.gif">
 </p>
 
+---
 ### Merchants
 <p align="center">
  <img src="https://imgur.com/nDt3Jzk.png">
 </p>
 
+---
 ### Items
 <p align="center">
  <img src="https://i.imgur.com/s17SFKX.png">
 </p>
 
-#### Cart
+---
+### Cart
 <p align="center">
  <img src="https://imgur.com/csO2TwW.png">
 </p>
 
+---
 ### Checkout 
 <p align="center">
  <img src="https://imgur.com/C1Sxkb8.png">
 </p>
 
+---
 ### Orders 
 <p align="center">
  <img src="https://imgur.com/sonvTDW.png">
